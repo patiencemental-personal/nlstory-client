@@ -9,9 +9,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* body 기본 정렬 */
   @apply flex flex-col items-center;
+  /* 기본 배경 및 글자 색상 */
+  @apply bg-zinc-900 text-gray-50;
 }
 
+/* id=root: 최대 맥시멈 사이즈 지정 */
 #root {
   @apply w-full max-w-screen-2xl;
 }
