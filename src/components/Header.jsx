@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SiStoryblok } from 'react-icons/si';
+import { useAuthContext } from '../contexts/AuthContext';
 
 const Header = () => {
+  const { user, login, logout } = useAuthContext();
   return (
     <header className='flex justify-between border-b text-xl px-2 py-4'>
       <Link 
@@ -13,7 +15,8 @@ const Header = () => {
         <h1 className='text-2xl font-bold tracking-wider'>nlstory</h1>
       </Link>
       <nav>
-        <Link className='p-2 hover:bg-blue-500 font-bold'>Login</Link>
+        {user && <button onClick={logout} className='p-2 hover:bg-blue-500 font-bold'>Logout</button>}
+        {!user && <button onClick={login} className='p-2 hover:bg-blue-500 font-bold'>Login</button>}
       </nav>
     </header>
   );
