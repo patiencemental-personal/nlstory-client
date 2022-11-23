@@ -6,7 +6,6 @@ export default function Layout() {
   return (
     <React.Fragment>
       <Header />
-      <div>Layout</div>
       <Outlet />
     </React.Fragment>
   )
