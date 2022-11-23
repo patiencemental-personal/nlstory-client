@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuthContext } from '../contexts/AuthContext';
 
-const MENU_CLASSES = 'border rounded h-40 flex justify-center items-center hover:bg-blue-500 hover:border-none';
+const MENU_CLASSES = 'border rounded h-40 flex justify-center items-center hover:bg-sgnr-blue hover:border-none';
 const MENU_HEADER_CLASSES = 'text-3xl font-bold tracking-wider';
 
 export default function HomePage() {

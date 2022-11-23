@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { SiStoryblok } from 'react-icons/si';
 import { useAuthContext } from '../contexts/AuthContext';
 
-const BUTTON_CLASSES = 'p-2 hover:bg-blue-500 font-bold';
+const BUTTON_CLASSES = 'p-2 hover:bg-sgnr-blue font-bold';
 
 const Header = () => {
   const { user, login, logout } = useAuthContext();
@@ -13,8 +13,8 @@ const Header = () => {
         to='/'
         className='p-2 flex align-center'
       >
-        <SiStoryblok className='text-3xl text-blue-500 mr-2' />
-        <h1 className='text-2xl font-bold tracking-wider'>nlstory</h1>
+        <SiStoryblok className='text-3xl text-sgnr-blue mr-2' />
+        <h1 className='text-2xl font-bold tracking-wider '>nlstory</h1>
       </Link>
       <nav>
         {user?.isAdmin && <button onClick={() => alert('관리자 페이지 이동')} className={BUTTON_CLASSES}>관리자</button>}
