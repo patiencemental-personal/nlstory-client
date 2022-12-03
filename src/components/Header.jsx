@@ -1,20 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SiStoryblok } from 'react-icons/si';
+import { BsSquareFill } from 'react-icons/bs';
 import { useAuthContext } from '../contexts/AuthContext';
+import { path } from './../router/path';
 
 const BUTTON_CLASSES = 'p-2 hover:bg-sgnr-blue font-bold';
 
-const Header = () => {
+export default function Header() {
   const { user, login, logout } = useAuthContext();
   return (
     <header className='flex justify-between border-b text-xl px-2 py-4'>
       <Link 
-        to='/'
+        to={path.ENTRY}
         className='p-2 flex align-center'
       >
-        <SiStoryblok className='text-3xl text-sgnr-blue mr-2' />
-        <h1 className='text-2xl font-bold tracking-wider '>nlstory</h1>
+        <BsSquareFill className='text-3xl text-sgnr-blue mr-2' />
+        <h1 className='text-2xl font-bold tracking-wider'>nlstory</h1>
       </Link>
       <nav>
         {user?.isAdmin && <button onClick={() => alert('관리자 페이지 이동')} className={BUTTON_CLASSES}>관리자</button>}
@@ -24,5 +25,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;
