@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsSquareFill } from 'react-icons/bs';
 import { useAuthContext } from '../contexts/AuthContext';
-import { path } from './../router/path';
+import { path } from '../router/path';
 
 const BUTTON_CLASSES = 'p-2 hover:bg-sgnr-blue font-bold';
 

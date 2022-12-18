@@ -4,10 +4,11 @@ import Layout from '../layouts/Layout';
 import HomePage from '../pages/HomePage';
 import NotFound from '../pages/NotFound';
 import TaskManagementPage from '../pages/TaskManagementPage';
+import TagDiaryPage from 'pages/TagDiaryPage';
 import { path } from './path';
 
 const {
-  ENTRY, TASK_MANAGEMENT
+  ENTRY, TASK_MANAGEMENT, TAG_DIARY,
 } = path;
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: TASK_MANAGEMENT,
         element: <TaskManagementPage />
+      },
+      {
+        path: TAG_DIARY,
+        element: <TagDiaryPage />
       }
     ]
   }

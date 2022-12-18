@@ -27,18 +27,18 @@ export default function TaskManagementPage() {
               <button className='mr-4 p-2 text-sm font-bold border rounded hover:bg-sgnr-blue hover:border-sgnr-blue'>Save</button>
               <div className='flex items-center'>
                 <span className=' mr-2 text-lg font-bold'>Get Over</span>
-                <Toggle ref={slumpGetOverToggleRef} id='slump-toggle' />
+                <Toggle ref={slumpGetOverToggleRef} />
               </div>
               <div className='flex items-center'>
                 <span className='mr-2 text-lg font-bold'>Today is slump</span>
-                <Toggle ref={slumpToggleRef} id='slump-toggle' />
+                <Toggle ref={slumpToggleRef} />
               </div>
             </div>
           </header>
           <div className='p-2 text-center'>
             <textarea
               id="slump-reason"
-              rows="4"
+              rows={4}
               className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="작성 가이드
               1. 감정 주기와 같은 이유 없는 슬럼프 인가요?
               2. 슬럼프 이유를 고민해보고 작성해주세요
@@ -61,7 +61,7 @@ export default function TaskManagementPage() {
                 <div className='flex items-center'>
                   <span className='mr-4'>22:11:27</span>
                   <span className='mr-4 text-lg font-bold text-green-500'>GOOD</span>
-                  <Toggle ref={slumpToggleRef} id='slump-toggle' />
+                  <Toggle ref={slumpToggleRef} />
                   <span className='mr-4 text-lg font-bold text-red-500'>BAD</span>
                 </div>
                 <button className='p-2 text-sm font-bold border rounded hover:bg-sgnr-blue hover:border-sgnr-blue'>Remove</button>
@@ -73,7 +73,7 @@ export default function TaskManagementPage() {
                 <div className='flex items-center'>
                   <span className='mr-4'>22:11:27</span>
                   <span className='mr-4 text-lg font-bold text-green-500'>GOOD</span>
-                  <Toggle ref={slumpToggleRef} id='slump-toggle' />
+                  <Toggle ref={slumpToggleRef} />
                   <span className='mr-4 text-lg font-bold text-red-500'>BAD</span>
                 </div>
                 <button className='p-2 text-sm font-bold border rounded hover:bg-sgnr-blue hover:border-sgnr-blue'>Remove</button>
@@ -93,10 +93,10 @@ export default function TaskManagementPage() {
         </header>
 
         {/* @see https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/about/examples.md */}
-        <DragDropContext onDragEnd={(result) => console.log(result)}>
+        <DragDropContext onDragEnd={(result: any) => console.log(result)}>
           <Droppable droppableId="droppable" direction="horizontal">
             {
-              (provided, snapshot) => (
+              (provided: any, snapshot: any) => (
                 <ul
                   ref={provided.innerRef}
                   {...provided.droppableProps}
@@ -110,7 +110,7 @@ export default function TaskManagementPage() {
                         index={index}
                       >
                         {
-                          (provided, snapshot) => (
+                          (provided: any, snapshot: any) => (
                             <div
                               ref={provided.innerRef}
                               {...provided.draggableProps}
@@ -127,7 +127,7 @@ export default function TaskManagementPage() {
                               <DragDropContext onDragEnd={console.log}>
                                 <Droppable droppableId="droppable">
                                   {
-                                    (provided, snapshot) => (
+                                    (provided: any, snapshot: any) => (
                                       <ul
                                         ref={provided.innerRef}
                                         {...provided.droppableProps}
@@ -141,7 +141,7 @@ export default function TaskManagementPage() {
                                               index={index}
                                             >
                                               {
-                                                (provided, snapshot) => (
+                                                (provided: any, snapshot: any) => (
                                                   <li 
                                                     ref={provided.innerRef}
                                                     {...provided.draggableProps}

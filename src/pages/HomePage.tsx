@@ -26,16 +26,11 @@ export default function HomePage() {
               <h2 className={MENU_HEADER_CLASSES}>Task</h2>
             </div>
           </Link>
-          {/* 
-          데일리 태그형 일기
-          하루 단위로 일기를 쓴다
-          하루의 일기를 한 페이지에 쓰는데 여러 파트로 나눠져 있고, 각 파트 별로 1개 이상의 태그를 달 수 있다
-          태그 혹은 날자를 통해서 검색 가능하게 해야 한다
-          */}
-          <div className={MENU_CLASSES}>
-            <h2 className={MENU_HEADER_CLASSES}>Tag Daily Diary</h2>
-          </div>
-
+          <Link to={path.TAG_DIARY}>
+            <div className={MENU_CLASSES}>
+              <h2 className={MENU_HEADER_CLASSES}>Tag Diary</h2>
+            </div>
+          </Link>
           {/* <div className={MENU_CLASSES}>
             <h2 className={MENU_HEADER_CLASSES}>PRINCIPLES</h2>
           </div>
