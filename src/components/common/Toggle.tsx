@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 
-interface  Props {
+type Props = {
   text?: string;
 }
 

@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       colors: {
         'sgnr-blue': '#3b82f6',
+      },
+      width: {
+        '136': '34rem',
       }
     },
   },
