@@ -6,6 +6,7 @@ import { AuthContextProvider } from './contexts/AuthContext';
 import GlobalPopup from 'components/popup/GlobalPopup';
 import reduxStore from 'stores/reduxStore';
 import { Provider as ReduxStoreProvider }from 'react-redux';
+import GlobalFloatingPopup from 'components/floatingPopup/GlobalFloatingPopup';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
@@ -15,6 +16,7 @@ if (rootElement) {
     <ReduxStoreProvider store={reduxStore}>
       <AuthContextProvider>
         <GlobalPopup />
+        <GlobalFloatingPopup />
         <LsStoryRouter />
       </AuthContextProvider>
     </ReduxStoreProvider>

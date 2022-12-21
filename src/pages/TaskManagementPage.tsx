@@ -173,9 +173,6 @@ export default function TaskManagementPage() {
                                   }
                                 </Droppable>
                               </DragDropContext>
-                              
-                              
-
                               {/* {item}-project-name */}
                             </div>
                           )

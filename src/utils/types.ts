@@ -1,6 +1,8 @@
-import { diaryPopupModeType } from 'utils/freeze';
+import { tagEditionPopupModeType } from './freezeTypes';
+import { diaryPopupModeType } from 'utils/freezeTypes';
 
 export type DiaryPopupModeType = keyof typeof diaryPopupModeType;
+export type TagEditionPopupModeType = keyof typeof tagEditionPopupModeType;
 
 export type TagType = {
   id: string;
@@ -13,6 +15,6 @@ export type DiaryType = {
   summary: string;
   content: string;
   tagIds: string[];
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: number;
+  updatedAt: number;
 };

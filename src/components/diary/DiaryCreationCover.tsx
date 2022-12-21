@@ -1,10 +1,10 @@
-import React from 'react'
 import { usePopupStore } from 'stores/usePopupStore';
-import { popupType, diaryPopupModeType } from 'utils/freeze';
+import { popupType, diaryPopupModeType } from 'utils/freezeTypes';
 
 export default function DiaryCreationCover() {
 
   const { openPopup } = usePopupStore();
+
   const openDiaryCreationPopup = () => {
     openPopup({
       type: popupType.DIARY_EDITION_OR_VIEWER,
