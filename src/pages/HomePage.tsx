@@ -19,18 +19,18 @@ export default function HomePage() {
       <div className={MENU_CLASSES}>
         <h2 className={MENU_HEADER_CLASSES}>다이어리</h2>
       </div> */}
+      <Link to={path.TASK_MANAGEMENT}>
+        <div className={MENU_CLASSES}>
+          <h2 className={MENU_HEADER_CLASSES}>Task</h2>
+        </div>
+      </Link>
+      <Link to={path.TAG_DIARY}>
+        <div className={MENU_CLASSES}>
+          <h2 className={MENU_HEADER_CLASSES}>Tag Diary</h2>
+        </div>
+      </Link>
       {user?.isAdmin && (
         <React.Fragment>
-          <Link to={path.TASK_MANAGEMENT}>
-            <div className={MENU_CLASSES}>
-              <h2 className={MENU_HEADER_CLASSES}>Task</h2>
-            </div>
-          </Link>
-          <Link to={path.TAG_DIARY}>
-            <div className={MENU_CLASSES}>
-              <h2 className={MENU_HEADER_CLASSES}>Tag Diary</h2>
-            </div>
-          </Link>
           {/* <div className={MENU_CLASSES}>
             <h2 className={MENU_HEADER_CLASSES}>PRINCIPLES</h2>
           </div>

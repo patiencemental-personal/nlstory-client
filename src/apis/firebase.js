@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, set, remove, update } from "firebase/database";
+import { getDatabase, ref, get, set, remove, update, query, } from "firebase/database";
 import { 
   getAuth,
   signInWithPopup,
@@ -109,3 +109,15 @@ export async function fGetDiarys(userId) {
 export async function fDeleteDiary(userId, diaryId) {
   return await remove(ref(database, `diarys/${userId}/${diaryId}`));
 }
+
+export async function fGetDiarysByTag (userId, tagId) {
+  const q = query(ref(database, `diarys/${userId}`));
+  return await get(q).then((snapshot) => {
+    if (snapshot.exists()) {
+      const diarys = snapshot.val(); // 여기서 일단 모든 다이어리들을 불러옴
+      return Object.keys(diarys).map((key) => diarys[key]).filter((diary) => diary.tagIds.includes(tagId));
+    } else {
+      return [];
+    }
+  });
+} 

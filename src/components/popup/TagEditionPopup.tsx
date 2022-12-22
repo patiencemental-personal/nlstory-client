@@ -61,8 +61,13 @@ export default function TagEditionPopup() {
   }
 
   const createOrUpdateTag = () => {
-    if (tagName.length === 0) {
+    const { length } = tagName;
+    if (length === 0) {
       alert('태그 이름을 작성해주세요.');
+      return ;
+    }
+    if (length > 10) {
+      alert('태그 이름은 10자 이내로 작성해주세요.');
       return ;
     }
 
