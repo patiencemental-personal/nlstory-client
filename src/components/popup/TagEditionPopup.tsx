@@ -29,8 +29,8 @@ export default function TagEditionPopup() {
     setPickedColor(event.target.dataset.color);
   }
 
-  const existDuplicatedName = () => {
-    return tags.some((tag) => tag.name === tagName); // 중복된 이름의 태그가 존재하는지 확인
+  const getDuplicatedTagByName = () => {
+    return tags.find((tag) => tag.name === tagName); // 중복된 이름의 태그가 존재하는지 확인
   }
 
   const updateTag = () => {
@@ -61,15 +61,19 @@ export default function TagEditionPopup() {
   }
 
   const createOrUpdateTag = () => {
-    if (existDuplicatedName()) {
-      alert('중복된 이름의 태그가 존재합니다.');
+    if (tagName.length === 0) {
+      alert('태그 이름을 작성해주세요.');
       return ;
     }
 
+    const duplicatedTag = getDuplicatedTagByName();
+    
     if (mode === tagEditionPopupModeType.CREATION) {
-      createTag();
+      if (duplicatedTag) alert('중복된 이름의 태그가 존재합니다.');
+      else createTag();
     } else if (mode === tagEditionPopupModeType.UPDATION) {
-      updateTag();
+      if (duplicatedTag && duplicatedTag.id !== getOption().tag.id) alert('중복된 이름의 태그가 존재합니다.');
+      else updateTag();
     }
   }
 

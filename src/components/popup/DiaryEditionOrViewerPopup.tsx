@@ -37,7 +37,21 @@ export default function DiaryEditionOrViewerPopup() {
     })
   }
 
-  const createDiary = (event: React.BaseSyntheticEvent) => {
+  const validate = () => {
+    if (!summary) {
+      alert('요약을 입력해주세요.');
+      return false;
+    }
+    if (!content) {
+      alert('내용을 입력해주세요.');
+      return false;
+    }
+    return true;
+  }
+
+  const createDiary = () => {
+    if (!validate()) return ;
+    
     const newDiary: DiaryType = {
       id: generateId(),
       summary,
@@ -46,6 +60,7 @@ export default function DiaryEditionOrViewerPopup() {
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
+
     fAddDiary(uid, newDiary)
       .then(() => {
         dispatch(sAddDiary(newDiary));
@@ -57,7 +72,9 @@ export default function DiaryEditionOrViewerPopup() {
       })
   }
 
-  const updateDiary = (event: React.BaseSyntheticEvent) => {
+  const updateDiary = () => {
+    if (!validate()) return ;
+
     const updatedDiary: DiaryType = {
       ...getOption().diary,
       summary,
