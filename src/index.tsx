@@ -7,6 +7,8 @@ import GlobalPopup from 'components/popup/GlobalPopup';
 import reduxStore from 'stores/reduxStore';
 import { Provider as ReduxStoreProvider }from 'react-redux';
 import GlobalFloatingPopup from 'components/floatingPopup/GlobalFloatingPopup';
+import { ToastContainer, Flip  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
@@ -19,6 +21,13 @@ if (rootElement) {
         <GlobalFloatingPopup />
         <LsStoryRouter />
       </AuthContextProvider>
+      <ToastContainer
+        transition={Flip}
+        position="top-right"
+        autoClose={2000}
+        closeOnClick
+        pauseOnHover
+      />
     </ReduxStoreProvider>
     // </React.StrictMode>
   );
