@@ -2,7 +2,7 @@ import React from 'react';
 import DiaryCreationCover from 'components/diary/DiaryCreationCover';
 import DiaryCover from 'components/diary/DiaryCover';
 import Tag from 'components/diary/Tag';
-import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { AiFillPlusSquare } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { DiaryType, TagType } from 'utils/types';
 import { useDispatch } from 'react-redux';
@@ -110,33 +110,50 @@ export default function TagDiaryPage() {
 
   return (
     <section className='p-8'>
-      <section id='tag' className='border-b-[3px] p-4'>
-        <div id='tags' className='flex' onClick={searchTag} onContextMenu={openTagManagementSelectionFloatingPopup}>
-          <button onClick={openTagCreationPopup} className='rounded text-rose-800 font-bold text-3xl'>
-            <AiOutlinePlusCircle />
+      <section id='tagSection' className='border-gray-700 rounded p-4 bg-gray-700'>
+        <div className='flex items-center font-bold text-2xl'>
+          <span className='m-2 text-2xl'>Tags</span>
+          <button onClick={openTagCreationPopup} className='rounded text-sgnr-blue text-3xl'>
+            <AiFillPlusSquare />
           </button>
-          {tags?.map((tag, index) => <Tag key={index} tag={tag} size='regular' />)}
         </div>
+        <ul id='tags' className='flex flex-wrap' onClick={searchTag} onContextMenu={openTagManagementSelectionFloatingPopup}>
+          {tags?.map((tag, index) => <Tag key={index} tag={tag} size='regular' />)}
+        </ul>
       </section>
-      <section id='tabs' className='p-4 flex' onClick={changeTab}>
-        <div className={`border p-2 mr-2 ${selectedTab === tabType.GLOBAL && 'border-green-600'}`}><button data-tab-id={tabType.GLOBAL}>Global</button></div>
+      <section id='tabSection' className='pt-8 pb-0 flex' onClick={changeTab}>
+        <div
+          data-tab-id={tabType.GLOBAL}
+          className={`cursor-pointer w-[180px] text-center py-8 px-10 font-bold text-3xl ${selectedTab === tabType.GLOBAL && 'bg-gray-700'}`}
+        >
+          <button data-tab-id={tabType.GLOBAL}>Global</button>
+        </div>
         {searchedTag && (
-          <div className={`border p-2 mr-2 ${selectedTab === tabType.SEARCHED_TAG && 'border-green-600'}`}>
-            <button data-tab-id={tabType.SEARCHED_TAG}>{searchedTag.name} | <span><button onClick={unSearchTag}>X</button></span></button>
+          <div
+            data-tab-id={tabType.SEARCHED_TAG}
+            className={`cursor-pointer relative min-w-[180px] text-center py-8 px-10 font-bold text-3xl ${selectedTab === tabType.SEARCHED_TAG && 'bg-gray-700'}`}
+          >
+            <button data-tab-id={tabType.SEARCHED_TAG}>{searchedTag.name}</button>
+            {selectedTab === tabType.SEARCHED_TAG && <button onClick={unSearchTag} className='absolute top-4 right-4 text-xl'>X</button>}
           </div>
         )}
       </section>
-      {selectedTab === tabType.GLOBAL && (
-        <div id='global-diarys' className='p-4 grid grid-cols-5 gap-x-10 gap-y-6'>
-          <DiaryCreationCover />
-          {diarys.map((diary) => <DiaryCover key={diary.id} tags={tags} diary={diary} />)}
-        </div>
-      )}
-      {selectedTab === tabType.SEARCHED_TAG && (
-        <div id='searched-tag-diarys' className='p-4 grid grid-cols-5 gap-x-10 gap-y-6'>
-          {diarysBySearchedTag.map((diary) => <DiaryCover key={diary.id} tags={tags} diary={diary} />)}
-        </div>
-      )}
+      <section 
+        id='diarySection'
+        className='p-4 grid 2xl:grid-cols-5 xl:grid-cols-4 min-[950px]:grid-cols-3 min-[700px]:grid-cols-2 min-[300px]:grid-cols-1 auto-rows-min gap-10 bg-gray-700 min-h-screen'
+      >
+        {selectedTab === tabType.GLOBAL && (
+          <React.Fragment>
+            <DiaryCreationCover />
+            {diarys.map((diary) => <DiaryCover key={diary.id} tags={tags} diary={diary} />)}
+          </React.Fragment>
+        )}
+        {selectedTab === tabType.SEARCHED_TAG && (
+          <React.Fragment>
+            {diarysBySearchedTag.map((diary) => <DiaryCover key={diary.id} tags={tags} diary={diary} />)}
+          </React.Fragment>
+        )}
+      </section>
     </section>
   )
 }

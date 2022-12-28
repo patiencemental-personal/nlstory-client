@@ -131,54 +131,53 @@ export default function DiaryEditionOrViewerPopup() {
   }, [])
 
   return (
-    <div>
-      <h3>Summary</h3>
-      <textarea
-        id="summaryArea"
-        value={summary}
-        rows={7}
-        readOnly={false}
-        className="block resize-none p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Write your thoughts here..."
-        onChange={(event) => { setSummary(event.target.value); }}
-      />
+    <div className='p-4 w-144'>
+      <section className='mb-4'>
+        <h3 className='mb-3 pl-2 border-l-4 font-semibold'>Summary</h3>
+        <textarea
+          id="summaryArea"
+          value={summary}
+          rows={7}
+          readOnly={false}
+          className="block resize-none p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="요약본을 작성해주세욧!"
+          onChange={(event) => { setSummary(event.target.value); }}
+        />
+      </section>
 
-      <Divider />
+      <section className='mb-4'>
+        <h3 className='mb-2 pl-2 border-l-4 font-semibold'>Content</h3>
+        <textarea
+          id="contentArea"
+          value={content}
+          rows={12}
+          readOnly={false}
+          className="block resize-none p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="생각을 정리하세욧!"
+          onChange={(event) => { setContent(event.target.value); }}
+        />
+      </section>
 
-      <h3>Content</h3>
-      <textarea
-        id="contentArea"
-        value={content}
-        rows={12}
-        readOnly={false}
-        className="block resize-none p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Write your thoughts here..."
-        onChange={(event) => { setContent(event.target.value); }}
-      />
-
-      <Divider />
-
-      <h3>Tags</h3>
-      <ul id='tags' onClick={selectTag}>
-        {tags.map((tag, index) => <Tag key={index} tag={tag} size='small' />)}
-      </ul>
+      <section className='mb-4'>
+        <h3 className='mb-3 pl-2 border-l-4 font-semibold'>Tags</h3>
+        <ul id='tags' className='flex flex-wrap' onClick={selectTag}>
+          {tags.map((tag, index) => <Tag key={index} tag={tag} size='small' />)}
+        </ul>
+      </section>
 
       {selectedTagIds?.length > 0 && (
-        <React.Fragment>
-          <Divider />
-          <h3>Selected Tags</h3>
-          <ul id='selected-tags' onClick={unSelectTag}>
+        <section className='mb-4'>
+          <h3 className='mb-3 pl-2 border-l-4 font-semibold'>Selected Tags</h3>
+          <ul id='selected-tags' className='flex flex-wrap' onClick={unSelectTag}>
             {selectedTagIds.map((tagId, index) =>   {
               const tag = tags.find(tag => tag.id === tagId);
               return tag && <Tag key={index} tag={tag} size='small' />
             })}
           </ul>
-        </React.Fragment>
+        </section>
       )}
 
-      <Divider />
-
-      <footer className='flex justify-center'>
+      <footer className='mt-4 flex justify-center'>
         {
           mode === diaryPopupModeType.CREATION && (
             <button
@@ -206,9 +205,4 @@ export default function DiaryEditionOrViewerPopup() {
       </footer>
     </div>
   )
-}
-
-
-const Divider = () => {
-  return <div className='w-full border my-4' />
 }

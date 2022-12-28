@@ -17,9 +17,9 @@ if (rootElement) {
     // <React.StrictMode>
     <ReduxStoreProvider store={reduxStore}>
       <AuthContextProvider>
+        <LsStoryRouter />
         <GlobalPopup />
         <GlobalFloatingPopup />
-        <LsStoryRouter />
       </AuthContextProvider>
       <ToastContainer
         transition={Flip}

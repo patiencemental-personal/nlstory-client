@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -26,5 +30,5 @@ code {
 }
 
 input {
-  @apply p-4 outline-none border border-gray-300 my-1;
+  @apply p-4 outline-none border border-gray-300 m-0;
 }

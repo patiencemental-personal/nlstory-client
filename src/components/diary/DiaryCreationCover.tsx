@@ -1,5 +1,6 @@
 import { usePopupStore } from 'stores/usePopupStore';
 import { popupType, diaryPopupModeType } from 'utils/freezeTypes';
+import { TfiWrite } from 'react-icons/tfi';
 
 export default function DiaryCreationCover() {
 
@@ -13,10 +14,10 @@ export default function DiaryCreationCover() {
       }
     })
   }
-
+  
   return (
-    <div onClick={openDiaryCreationPopup} className='border rounded w-full h-72 p-2 m-auto flex justify-center items-center cursor-pointer'>
-      작성
+    <div onClick={openDiaryCreationPopup} className='cursor-pointer border rounded w-[250px] h-72 p-2 mx-auto flex justify-center items-center'>
+      <button className='text-7xl'><TfiWrite/></button>
     </div>
   )
 }

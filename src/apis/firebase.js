@@ -115,7 +115,7 @@ export async function fGetDiarysByTag (userId, tagId) {
   return await get(q).then((snapshot) => {
     if (snapshot.exists()) {
       const diarys = snapshot.val(); // 여기서 일단 모든 다이어리들을 불러옴
-      return Object.keys(diarys).map((key) => diarys[key]).filter((diary) => diary.tagIds.includes(tagId));
+      return Object.keys(diarys).map((key) => diarys[key]).filter((diary) => diary.tagIds?.includes(tagId));
     } else {
       return [];
     }

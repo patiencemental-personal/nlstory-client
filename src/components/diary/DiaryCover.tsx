@@ -25,10 +25,9 @@ export default function DiaryCover({ tags, diary }: Props) {
 
   if (diary) {
     return (
-      <div onClick={openDiaryViewerPopup} className='cursor-pointer border rounded w-full max-h-72 p-2 mx-auto flex flex-col justify-between'>
-        <div id='main'>
-          {/* <h2 className='p-1 text-center font-bold truncate'>제목</h2> */}
-          <div id='summary' className='p-1 w-full h-24'>{summary}</div>
+      <div onClick={openDiaryViewerPopup} className='cursor-pointer border rounded w-[250px] h-72 p-2 mx-auto flex flex-col justify-between'>
+        <div id='main' className='h-full'>
+          <div id='summary' className='p-1 w-full text-base whitespace-pre-line line-clamp-[5]'>{summary}</div>
         </div>
         <div id='meta' className='border-solid border-t divide-slate-500'>
           <div className='p-1 text-sm'>

@@ -90,18 +90,17 @@ export default function TagEditionPopup() {
     }
   }, []);
 
-
   return (
     <React.Fragment>
       <div className='p-4 flex justify-around'>
         <input
           value={tagName}
           onChange={(event) => setTagName(event.target.value)}
-          className='rounded p-4 text-center text-white font-bold placeholder:text-white'
+          className='rounded  p-4 text-center text-white font-bold placeholder:text-white'
           style={{backgroundColor: `${pickedColor}`, borderColor: `${pickedColor}`}} 
           placeholder='태그 이름을 작성하세요.'
         />
-        <ul className='flex flex-row-reverse flex-wrap' onClick={pickColor}>
+        <ul className='flex flex-row-reverse flex-wrap w-[35%]' onClick={pickColor}>
           {palette.map((color, index) => <li key={index} data-color={`${color}`} className='cursor-pointer rounded-full w-6 h-6 m-1' style={{backgroundColor: color}} />)}
         </ul>
       </div>

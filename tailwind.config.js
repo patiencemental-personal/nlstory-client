@@ -7,9 +7,22 @@ module.exports = {
         'sgnr-blue': '#3b82f6',
       },
       width: {
-        '136': '34rem',
+        '144': '34rem',
       }
     },
+    fontSize: {
+      sm: '0.8rem',
+      base: '1rem',
+      xl: '1.25rem',
+      '2xl': '1.563rem',
+      '3xl': '1.953rem',
+      '4xl': '2.441rem',
+      '5xl': '3.052rem',
+      '6xl': '3.6rem',
+      '7xl': '4.2rem',
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }

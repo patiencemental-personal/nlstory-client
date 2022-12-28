@@ -8,8 +8,8 @@ export type TagProps = {
 }
 
 const SIZE_CLASSNAME_MAP = {
-  regular: 'px-2 py-1 m-2 text-base font-bold h-8',
-  small: 'px-1 py-1 m-1 text-xs font-bold',
+  regular: 'px-2 py-1 mr-2 mb-2 text-base font-bold h-8',
+  small: 'p-1 mr-1 mb-1 text-sm font-semibold',
 }
 
 export default function Tag({ tag, size = 'regular', onClick }: TagProps) {
