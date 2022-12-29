@@ -30,5 +30,5 @@ code {
 }
 
 input {
-  @apply p-4 outline-none border border-gray-300 m-0;
+  @apply outline-none border border-gray-300 m-0;
 }
