@@ -3,6 +3,7 @@ import { getDatabase, ref, get, set, remove, update, query, } from "firebase/dat
 import { 
   getAuth,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail ,
   sendEmailVerification,
   signInWithEmailAndPassword, // 로그인
   signOut,
@@ -22,7 +23,15 @@ const auth = getAuth();
 
 export async function fSignup(email, password) {
   await createUserWithEmailAndPassword(auth, email, password)
+  await fSendEmailVerification();
+}
+
+export async function fSendEmailVerification() {
   await sendEmailVerification(auth.currentUser);
+}
+
+export async function fSendPasswordResetEmail(email) {
+  await sendPasswordResetEmail(auth, email);
 }
 
 export async function fLogin(email, password) {

@@ -1,6 +1,7 @@
 export const popupType = Object.freeze({
   DIARY_EDITION_OR_VIEWER: 'DIARY_EDITION_OR_VIEWER',
   TAG_EDITION: 'TAG_EDITION',
+  PASSWORD_RESET_EMAIL_INPUT: 'PASSWORD_RESET_EMAIL_INPUT',
 });
 
 export const floatingPopupType = Object.freeze({

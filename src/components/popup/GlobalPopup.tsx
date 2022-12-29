@@ -4,6 +4,7 @@ import { popupType } from 'utils/freezeTypes';
 import DiaryEditionOrViewerPopup from './DiaryEditionOrViewerPopup';
 import PopupTemplate from './PopupTemplate';
 import TagEditionPopup from './TagEditionPopup';
+import PasswordResetEmailInputPopup from './PasswordResetEmailInputPopup';
 
 /**
  * @see https://github.com/Esportskorea/vss_frontent/blob/release/src/components/popup/GlobalPopup.jsx
@@ -15,6 +16,7 @@ export default function GlobalPopup() {
     return <PopupTemplate>
       {type === popupType.DIARY_EDITION_OR_VIEWER && <DiaryEditionOrViewerPopup />}
       {type === popupType.TAG_EDITION && <TagEditionPopup />}
+      {type === popupType.PASSWORD_RESET_EMAIL_INPUT && <PasswordResetEmailInputPopup />}
     </PopupTemplate>
   }
 
