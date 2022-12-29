@@ -6,9 +6,15 @@ import NotFound from '../pages/NotFound';
 import TaskManagementPage from '../pages/TaskManagementPage';
 import TagDiaryPage from 'pages/TagDiaryPage';
 import { path } from './path';
+import RequireAuth from './RequireAuth';
+import LoginPage from 'pages/LoginPage';
+import SignupPage from 'pages/SignupPage';
+import RequireNoAuth from './RequireNoAuth';
+import ProfilePage from 'pages/ProfilePage';
+import WaitPage from 'pages/WaitPage';
 
 const {
-  ENTRY, TASK_MANAGEMENT, TAG_DIARY,
+  ENTRY, WAIT, LOGIN, SIGNUP, TASK_MANAGEMENT, TAG_DIARY, PROFILE
 } = path;
 
 const router = createBrowserRouter([
@@ -23,15 +29,31 @@ const router = createBrowserRouter([
         element: <HomePage />
       },
       {
+        path: WAIT,
+        element: <WaitPage />
+      },
+      {
+        path: LOGIN,
+        element: <RequireNoAuth><LoginPage /></RequireNoAuth>
+      },
+      {
+        path: SIGNUP,
+        element: <RequireNoAuth><SignupPage /></RequireNoAuth>
+      },
+      {
+        path: PROFILE,
+        element: <RequireAuth emailVerified={false}><ProfilePage /></RequireAuth>
+      },
+      {
         path: TASK_MANAGEMENT,
-        element: <TaskManagementPage />
+        element: <RequireAuth><TaskManagementPage /></RequireAuth>
       },
       {
         path: TAG_DIARY,
-        element: <TagDiaryPage />
+        element: <RequireAuth><TagDiaryPage /></RequireAuth>
       }
     ]
-  }
+  },
 ])
 
 export default function LsStoryRouter() {

@@ -20,10 +20,6 @@ export default function HomePage() {
           <h2 className={MENU_HEADER_CLASSES}>Tag Diary</h2>
         </div>
       </Link>
-      {user?.isAdmin && (
-        <React.Fragment>
-        </React.Fragment>
-      )}
     </section>
   )
 }
