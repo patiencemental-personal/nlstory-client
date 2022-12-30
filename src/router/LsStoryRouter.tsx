@@ -12,6 +12,7 @@ import SignupPage from 'pages/SignupPage';
 import RequireNoAuth from './RequireNoAuth';
 import ProfilePage from 'pages/ProfilePage';
 import WaitPage from 'pages/WaitPage';
+import RequireTestAuth from './RequireTestAuth';
 
 const {
   ENTRY, WAIT, LOGIN, SIGNUP, TASK_MANAGEMENT, TAG_DIARY, PROFILE
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
       },
       {
         path: TASK_MANAGEMENT,
-        element: <RequireAuth><TaskManagementPage /></RequireAuth>
+        element: <RequireTestAuth><TaskManagementPage /></RequireTestAuth>
       },
       {
         path: TAG_DIARY,
