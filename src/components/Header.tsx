@@ -36,10 +36,8 @@ export default function Header() {
         <h1 className='text-2xl font-bold tracking-wider'>nlstory</h1>
       </Link>
       <nav>
-        {user && <button onClick={() => navigate(path.PROFILE)} className={`${BUTTON_CLASSES} ${pathname === path.PROFILE && 'bg-blue-900'}`}>My</button>}
         {user && <button onClick={logoutWithWait} className={BUTTON_CLASSES}>로그아웃</button>}
         {!user && <Link to={path.LOGIN}><button className={`${BUTTON_CLASSES} ${pathname === path.LOGIN && 'bg-blue-900'}`}>로그인</button></Link>}
-        {!user && <Link to={path.SIGNUP}><button className={`${BUTTON_CLASSES} ${pathname === path.SIGNUP && 'bg-blue-900'}`}>회원가입</button></Link>}
       </nav>
     </header>
   );

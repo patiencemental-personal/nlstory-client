@@ -2,7 +2,6 @@ import React from 'react'
 import { useFloatingPopupStore } from 'stores/useFloatingPopupStore';
 import { usePopupStore } from 'stores/usePopupStore';
 import { popupType, tagEditionPopupModeType } from 'utils/freezeTypes';
-import { fDeleteTag } from 'apis/firebase';
 import { useAuthContext } from 'contexts/AuthContext';
 import { useDispatch } from 'react-redux';
 import { sDeleteTag } from 'stores/slices/tagDiarySlice';
@@ -23,9 +22,9 @@ export default function TagManagementSelectionFloatingPopup() {
   }
   
   const deleteTag = () => {
-    closeFloatingPopup();
-    fDeleteTag(uid, tag.id)
-      .then(() => dispatch(sDeleteTag(tag.id)))
+    // closeFloatingPopup();
+    // fDeleteTag(uid, tag.id)
+    //   .then(() => dispatch(sDeleteTag(tag.id)))
   }
 
   return (

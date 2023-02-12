@@ -1,11 +1,10 @@
 import React from 'react'
-import { fAddTag, fUpdateTag } from 'apis/firebase';
 import { TagType } from 'utils/types';
 import { useDispatch } from 'react-redux';
 import { useAuthContext } from 'contexts/AuthContext';
 import { useSelector } from 'react-redux';
-import { generateId } from 'utils/common';
-import { sAddTag, sUpdateTag } from 'stores/slices/tagDiarySlice';
+// import { generateId } from 'utils/common';
+// import { sAddTag, sUpdateTag } from 'stores/slices/tagDiarySlice';
 import { usePopupStore } from 'stores/usePopupStore';
 import { tagEditionPopupModeType } from 'utils/freezeTypes';
 
@@ -34,30 +33,30 @@ export default function TagEditionPopup() {
   }
 
   const updateTag = () => {
-    const { tag } = getOption();
-    const updatedTag = { ...tag, name: tagName, color: pickedColor };
-    fUpdateTag(uid, updatedTag)
-      .then(() => {
-        dispatch(sUpdateTag(updatedTag));
-        closePopup();
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('태그 수정에 실패했습니다. 다시 시도해주세요.');
-      });
+    // const { tag } = getOption();
+    // const updatedTag = { ...tag, name: tagName, color: pickedColor };
+    // fUpdateTag(uid, updatedTag)
+    //   .then(() => {
+    //     dispatch(sUpdateTag(updatedTag));
+    //     closePopup();
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //     alert('태그 수정에 실패했습니다. 다시 시도해주세요.');
+    //   });
   }
 
   const createTag = () => {
-    const newTag = { id: generateId(), name: tagName, color: pickedColor }
-    fAddTag(uid, newTag)
-      .then(() => {
-        dispatch(sAddTag(newTag));
-        closePopup();
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('태그 생성에 실패했습니다. 다시 시도해주세요.');
-      });
+    // const newTag = { id: generateId(), name: tagName, color: pickedColor }
+    // fAddTag(uid, newTag)
+    //   .then(() => {
+    //     dispatch(sAddTag(newTag));
+    //     closePopup();
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //     alert('태그 생성에 실패했습니다. 다시 시도해주세요.');
+    //   });
   }
 
   const createOrUpdateTag = () => {

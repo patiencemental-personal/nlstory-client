@@ -6,8 +6,7 @@ import { AiFillPlusSquare } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { DiaryType, TagType } from 'utils/types';
 import { useDispatch } from 'react-redux';
-import { sInitTags, sInitDiarys, } from 'stores/slices/tagDiarySlice';
-import { fGetTags, fGetDiarys, fGetDiarysByTag } from 'apis/firebase';
+// import { sInitTags, sInitDiarys, } from 'stores/slices/tagDiarySlice';
 import { useAuthContext } from 'contexts/AuthContext';
 import { usePopupStore } from 'stores/usePopupStore';
 import { floatingPopupType, popupType, tagEditionPopupModeType } from 'utils/freezeTypes';
@@ -78,34 +77,34 @@ export default function TagDiaryPage() {
   }
 
   React.useEffect(() => {
-    if (uid) {
-      fGetTags(uid)
-        .then((tags) => dispatch(sInitTags(tags as TagType[])))
-        .catch((error) => {
-          console.error(error);
-          alert('태그를 불러오는데 실패했습니다. 다시 시도해주세요.');
-        });
-      fGetDiarys(uid)
-        .then((diarys) => dispatch(sInitDiarys(diarys as DiaryType[])))
-        .catch((error) => {
-          console.error(error);
-          alert('다이어리를 불러오는데 실패했습니다. 다시 시도해주세요.');
-        });
-    } else {
-      dispatch(sInitTags([]));
-      dispatch(sInitDiarys([]));
-    }
+    // if (uid) {
+    //   fGetTags(uid)
+    //     .then((tags) => dispatch(sInitTags(tags as TagType[])))
+    //     .catch((error) => {
+    //       console.error(error);
+    //       alert('태그를 불러오는데 실패했습니다. 다시 시도해주세요.');
+    //     });
+    //   fGetDiarys(uid)
+    //     .then((diarys) => dispatch(sInitDiarys(diarys as DiaryType[])))
+    //     .catch((error) => {
+    //       console.error(error);
+    //       alert('다이어리를 불러오는데 실패했습니다. 다시 시도해주세요.');
+    //     });
+    // } else {
+    //   dispatch(sInitTags([]));
+    //   dispatch(sInitDiarys([]));
+    // }
   }, [uid]);
 
   React.useEffect(() => {
-    if (searchedTag) {
-      fGetDiarysByTag(uid, searchedTag.id)
-        .then((diarys) => setDiarysBySearchedTag(diarys))
-        .catch((error) => {
-          console.error(error);
-          alert('태그 다이어리를 불러오는데 실패했습니다. 다시 시도해주세요.');
-        });
-    }
+    // if (searchedTag) {
+    //   fGetDiarysByTag(uid, searchedTag.id)
+    //     .then((diarys) => setDiarysBySearchedTag(diarys))
+    //     .catch((error) => {
+    //       console.error(error);
+    //       alert('태그 다이어리를 불러오는데 실패했습니다. 다시 시도해주세요.');
+    //     });
+    // }
   }, [searchedTag]);
 
   return (

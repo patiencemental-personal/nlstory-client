@@ -7,7 +7,6 @@ import { usePopupStore } from 'stores/usePopupStore';
 import { generateId } from 'utils/common';
 import { diaryPopupModeType } from 'utils/freezeTypes';
 import { DiaryType, TagType } from 'utils/types';
-import { fAddDiary, fUpdateDiary, fDeleteDiary } from 'apis/firebase';
 
 export default function DiaryEditionOrViewerPopup() {
   const { getOption, closePopup } = usePopupStore();
@@ -50,84 +49,84 @@ export default function DiaryEditionOrViewerPopup() {
   }
 
   const createDiary = () => {
-    if (!validate()) return ;
+    // if (!validate()) return ;
     
-    const newDiary: DiaryType = {
-      id: generateId(),
-      summary,
-      content,
-      tagIds: selectedTagIds,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-    };
+    // const newDiary: DiaryType = {
+    //   id: generateId(),
+    //   summary,
+    //   content,
+    //   tagIds: selectedTagIds,
+    //   createdAt: Date.now(),
+    //   updatedAt: Date.now(),
+    // };
 
-    fAddDiary(uid, newDiary)
-      .then(() => {
-        dispatch(sAddDiary(newDiary));
-        closePopup();
-      })
-      .catch(error => {
-        console.log(error);
-        alert('다이어리 생성에 실패했습니다. 다시 시도해주세요.')
-      })
+    // fAddDiary(uid, newDiary)
+    //   .then(() => {
+    //     dispatch(sAddDiary(newDiary));
+    //     closePopup();
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //     alert('다이어리 생성에 실패했습니다. 다시 시도해주세요.')
+    //   })
   }
 
   const updateDiary = () => {
-    if (!validate()) return ;
+    // if (!validate()) return ;
 
-    const updatedDiary: DiaryType = {
-      ...getOption().diary,
-      summary,
-      content,
-      tagIds: selectedTagIds,
-    };
-    fUpdateDiary(uid, updatedDiary)
-      .then(() => {
-        dispatch(sUpdateDiary(updatedDiary))
-        closePopup();
-      })
-      .catch(error => {
-        console.log(error);
-        alert('다이어리 수정에 실패했습니다. 다시 시도해주세요.')
-      })
+    // const updatedDiary: DiaryType = {
+    //   ...getOption().diary,
+    //   summary,
+    //   content,
+    //   tagIds: selectedTagIds,
+    // };
+    // fUpdateDiary(uid, updatedDiary)
+    //   .then(() => {
+    //     dispatch(sUpdateDiary(updatedDiary))
+    //     closePopup();
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //     alert('다이어리 수정에 실패했습니다. 다시 시도해주세요.')
+    //   })
   }
 
   const deleteDiary = () => {
-    const diaryId = getOption().diary.id;
-    fDeleteDiary(uid, diaryId)
-      .then(() => {
-        dispatch(sDeleteDiary(diaryId));
-        closePopup();
-      })
-      .catch(error => {
-        console.log(error);
-        alert('다이어리 삭제에 실패했습니다. 다시 시도해주세요.')
-      })
+    // const diaryId = getOption().diary.id;
+    // fDeleteDiary(uid, diaryId)
+    //   .then(() => {
+    //     dispatch(sDeleteDiary(diaryId));
+    //     closePopup();
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //     alert('다이어리 삭제에 실패했습니다. 다시 시도해주세요.')
+    //   })
   }
 
   React.useEffect(() => {
-    if (mode === diaryPopupModeType.UPDATION) {
-      const diary = getOption().diary;
-      const { summary, content, tagIds }: {
-        summary: string,
-        content: string,
-        tagIds: string[],
-      } = diary;
+    // if (mode === diaryPopupModeType.UPDATION) {
+    //   const diary = getOption().diary;
+    //   const { summary, content, tagIds }: {
+    //     summary: string,
+    //     content: string,
+    //     tagIds: string[],
+    //   } = diary;
       
-      // 전체 태그 중 존재하지 않는 태그들을 제거
-      const totalTagIds = tags.map((tag: TagType) => tag.id);
-      const existTagIdsInTotal = tagIds?.filter((tagId: string) => totalTagIds.includes(tagId)); // 전체 태그들 중 존재하는 태그들
-      if (existTagIdsInTotal && existTagIdsInTotal.length < tagIds.length) {
-        const diaryWithExistTags = { ...diary, tagIds: existTagIdsInTotal };
-        fUpdateDiary(uid, diaryWithExistTags)
-          .then(() => dispatch(sUpdateDiary(diaryWithExistTags)))
-          .catch(console.error);
-      }
+    //   // 전체 태그 중 존재하지 않는 태그들을 제거
+    //   const totalTagIds = tags.map((tag: TagType) => tag.id);
+    //   const existTagIdsInTotal = tagIds?.filter((tagId: string) => totalTagIds.includes(tagId)); // 전체 태그들 중 존재하는 태그들
+    //   if (existTagIdsInTotal && existTagIdsInTotal.length < tagIds.length) {
+    //     const diaryWithExistTags = { ...diary, tagIds: existTagIdsInTotal };
+    //     fUpdateDiary(uid, diaryWithExistTags)
+    //       .then(() => dispatch(sUpdateDiary(diaryWithExistTags)))
+    //       .catch(console.error);
+    //   }
       
-      setSummary(summary);
-      setContent(content);
-      setSelectedTagIds(tagIds || []);
-    }
+    //   setSummary(summary);
+    //   setContent(content);
+    //   setSelectedTagIds(tagIds || []);
+    // }
   }, [])
 
   return (

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 import { TagType, DiaryType } from 'utils/types';
 
 // Define a type for the slice state
