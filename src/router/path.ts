@@ -6,4 +6,5 @@ export const path = Object.freeze({
   PROFILE: '/profile', // 개인 프로필 페이지
   TASK_MANAGEMENT: '/task-management',
   TAG_DIARY: '/tag-diary',
+  DAILY_KEYWORD_NOTE: '/daily-keyword-note',
 });

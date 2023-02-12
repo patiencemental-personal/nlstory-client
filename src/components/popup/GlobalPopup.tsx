@@ -5,6 +5,7 @@ import DiaryEditionOrViewerPopup from './DiaryEditionOrViewerPopup';
 import PopupTemplate from './PopupTemplate';
 import TagEditionPopup from './TagEditionPopup';
 import PasswordResetEmailInputPopup from './PasswordResetEmailInputPopup';
+import KeywordNoteDetailPopup from './KeywordNoteDetailPopup';
 
 /**
  * @see https://github.com/Esportskorea/vss_frontent/blob/release/src/components/popup/GlobalPopup.jsx
@@ -12,11 +13,12 @@ import PasswordResetEmailInputPopup from './PasswordResetEmailInputPopup';
 export default function GlobalPopup() {
   const {visible, config} = usePopupStore();
   if (visible) {
-    const { type } = config!; 
+    const { type } = config!;
     return <PopupTemplate>
       {type === popupType.DIARY_EDITION_OR_VIEWER && <DiaryEditionOrViewerPopup />}
       {type === popupType.TAG_EDITION && <TagEditionPopup />}
       {type === popupType.PASSWORD_RESET_EMAIL_INPUT && <PasswordResetEmailInputPopup />}
+      {type === popupType.KEYWORD_NOTE_DETAIL && <KeywordNoteDetailPopup /> }
     </PopupTemplate>
   }
 
