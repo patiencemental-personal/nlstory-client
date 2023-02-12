@@ -18,7 +18,7 @@ export default function Tag({ tag, size = 'regular', onClick }: TagProps) {
     <span
       data-tag-id={id}
       onClick={onClick}
-      style={{'backgroundColor': color}}
+      style={{'backgroundColor': color, 'cursor': onClick ? 'pointer' : 'auto'}}
       className={`rounded cursor-pointer text-white ${SIZE_CLASSNAME_MAP[size]}`}
     >{name}</span>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import Tag  from 'components/diary/Tag';
+import Tag  from 'components/common/Tag';
 import { DiaryType, TagType } from 'utils/types';
 import { usePopupStore } from 'stores/usePopupStore';
 import { diaryPopupModeType, popupType } from 'utils/freezeTypes';

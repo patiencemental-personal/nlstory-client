@@ -1,7 +1,7 @@
 import React from 'react';
 import DiaryCreationCover from 'components/diary/DiaryCreationCover';
 import DiaryCover from 'components/diary/DiaryCover';
-import Tag from 'components/diary/Tag';
+import Tag from 'components/common/Tag';
 import { AiFillPlusSquare } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { DiaryType, TagType } from 'utils/types';

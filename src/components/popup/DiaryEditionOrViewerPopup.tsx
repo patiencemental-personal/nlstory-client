@@ -1,4 +1,4 @@
-import Tag from 'components/diary/Tag'
+import Tag from 'components/common/Tag'
 import { useAuthContext } from 'contexts/AuthContext';
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
