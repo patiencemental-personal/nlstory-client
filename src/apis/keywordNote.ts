@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const defaultConfig = {
   baseURL: process.env.REACT_APP_NLSTORY_SERVER,
-  withCredentials: false,
+  withCredentials: process.env.NODE_ENV === 'production',
 };
 
 const client = axios.create(defaultConfig);
