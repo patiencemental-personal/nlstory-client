@@ -14,10 +14,11 @@ export default function DailyKeywordNotePage() {
     setKeywordNotes(dailyKeywordNotes.data);
   }
 
-  const openKeywordNoteDetailPopup = async (id: string, properties: any) => {
+  const openKeywordNoteDetailPopup = async (id: string, url: string, properties: any) => {
     openPopup({
       type: popupType.KEYWORD_NOTE_DETAIL,
       option: {
+        url,
         keywordNoteId: id,
         title: properties.title.title[0].plain_text,
         topic: properties.topic.select.name,
@@ -36,9 +37,9 @@ export default function DailyKeywordNotePage() {
   return (
     <section className='p-8'>
       {
-        keywordNotes.map(({id, properties}: {id: string, properties: any}) => {
+        keywordNotes.map(({id, url, properties}: {id: string, url: string, properties: any}) => {
           return (
-            <div key={id} className='border rounded p-4 mb-6 cursor-pointer' onClick={() => openKeywordNoteDetailPopup(id, properties)}>
+            <div key={id} className='border rounded p-4 mb-6 cursor-pointer' onClick={() => openKeywordNoteDetailPopup(id, url, properties)}>
               <p className='mb-2 p-2 text-xl border-b-2 inline-block'>## {properties.title.title[0].plain_text}</p>
               <div className='flex p-2 flex-col'>
                 <div>[주제] {properties.topic.select.name}</div>

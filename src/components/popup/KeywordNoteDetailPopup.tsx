@@ -6,6 +6,7 @@ import Spinner from 'components/common/Spinner';
 import Tag from 'components/common/Tag';
 import { betweenNumber } from 'utils/common';
 import useLoading from 'hooks/useLoading';
+import { BsLink } from 'react-icons/bs';
 
 const KEYWORD = 'Keyword';
 const OUTPUT_GUIDE = 'Output Guide';
@@ -14,6 +15,7 @@ const REFERENCE_LINKS = 'Reference Links';
 export default function KeywordNoteDetailPopup() {
   const { getOption, closePopup } = usePopupStore();
   const {
+    url,
     keywordNoteId,
     topic,
     difficulty,
@@ -68,7 +70,7 @@ export default function KeywordNoteDetailPopup() {
       {
         keywordNoteDetail &&
           <React.Fragment>
-            <div className='flex mb-2'>
+            <div className='flex mb-2 relative'>
               <Tag tag={{
                 id: 'topic',
                 name: `[주제] ${topic}`,
@@ -89,6 +91,13 @@ export default function KeywordNoteDetailPopup() {
                 name: `[최근 복습 일자] ${lastReviewDate}`,
                 color: '#03a9f4',
               }} />
+              {/* 
+                @see
+                https://stackoverflow.com/questions/50709625/link-with-target-blank-and-rel-noopener-noreferrer-still-vulnerable
+              */}
+              <a href={url} target='_blank' rel="noopener noreferrer" className='text-2xl absolute right-0 border rounded p-1'>
+                <BsLink />
+              </a>
             </div>
             <div className='border p-4 rounded mb-4'>
               <p className='p-1 text-xl mb-2'># Keyword</p>
