@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-white);
+  padding: 1rem 0.5rem;
+}
+
+.link {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  color: var(--color-sgnr-blue);
+  margin-right: 0.5rem;
+}
+
+.title {
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-wider);
+}
+
+.button {
+  padding: 0.5rem;
+  font-weight: var(--font-bold);
+}
+.button:hover {
+  background-color: var(--color-sgnr-blue);
+}
+.buttonActive {
+  background-color: var(--color-thick-blue);
+}

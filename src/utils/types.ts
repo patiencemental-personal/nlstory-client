@@ -1,8 +1,8 @@
-import { tagEditionPopupModeType } from './freezeTypes';
-import { diaryPopupModeType } from 'utils/freezeTypes';
+// import { tagEditionPopupModeType } from './freezeTypes';
+// import { diaryPopupModeType } from 'utils/freezeTypes';
 
-export type DiaryPopupModeType = keyof typeof diaryPopupModeType;
-export type TagEditionPopupModeType = keyof typeof tagEditionPopupModeType;
+// export type DiaryPopupModeType = keyof typeof diaryPopupModeType;
+// export type TagEditionPopupModeType = keyof typeof tagEditionPopupModeType;
 
 export type TagType = {
   id: string;
@@ -10,11 +10,11 @@ export type TagType = {
   color: string;
 };
 
-export type DiaryType = {
-  id: string;
-  summary: string;
-  content: string;
-  tagIds: string[];
-  createdAt: number;
-  updatedAt: number;
-};
+// export type DiaryType = {
+//   id: string;
+//   summary: string;
+//   content: string;
+//   tagIds: string[];
+//   createdAt: number;
+//   updatedAt: number;
+// };

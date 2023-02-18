@@ -7,6 +7,8 @@ import Tag from 'components/common/Tag';
 import { betweenNumber } from 'utils/common';
 import useLoading from 'hooks/useLoading';
 import { BsLink } from 'react-icons/bs';
+import styles from './KeywordNoteDetailPopup.module.css';
+import textStyles from 'styles/Text.module.css';
 
 const KEYWORD = 'Keyword';
 const OUTPUT_GUIDE = 'Output Guide';
@@ -64,13 +66,13 @@ export default function KeywordNoteDetailPopup() {
     })();
   }, []);
 
-  if (loading) return <div className='p-4'><Spinner /></div>;
+  if (loading) return <div className={styles.page}><Spinner /></div>;
   return (
-    <div className='p-4'>
+    <div className={styles.page}>
       {
         keywordNoteDetail &&
           <React.Fragment>
-            <div className='flex mb-2 relative'>
+            <div className={styles.info}>
               <Tag tag={{
                 id: 'topic',
                 name: `[주제] ${topic}`,
@@ -95,85 +97,85 @@ export default function KeywordNoteDetailPopup() {
                 @see
                 https://stackoverflow.com/questions/50709625/link-with-target-blank-and-rel-noopener-noreferrer-still-vulnerable
               */}
-              <a href={url} target='_blank' rel="noopener noreferrer" className='text-2xl absolute right-0 border rounded p-1'>
+              <a href={url} target='_blank' rel="noopener noreferrer" className={`${textStyles.xl2} ${styles.noteLink}`}>
                 <BsLink />
               </a>
             </div>
-            <div className='border p-4 rounded mb-4'>
-              <p className='p-1 text-xl mb-2'># Keyword</p>
+            <div className={styles.noteSection}>
+              <p className={`${styles.noteSectionTitle} ${textStyles.xl}`}># Keyword</p>
               {(keywordNoteDetail[KEYWORD] as any).children.map((child: any) => <NotionBlock node={child} />)}
             </div>
-            <div className='border p-4 rounded mb-4'>
-              <p className='p-1 text-xl mb-2'># Output Guide</p>
+            <div className={styles.noteSection}>
+              <p className={`${styles.noteSectionTitle} ${textStyles.xl}`}># Output Guide</p>
               {(keywordNoteDetail[OUTPUT_GUIDE] as any).children.map((child: any) => <NotionBlock node={child} />)}
             </div>
-            <div className='border p-4 rounded mb-4'>
-              <p className='p-1 text-xl mb-2'># Reference Links</p>
+            <div className={styles.noteSection}>
+              <p className={`${styles.noteSectionTitle} ${textStyles.xl}`}># Reference Links</p>
               {(keywordNoteDetail[REFERENCE_LINKS] as any).children.map((child: any) => <NotionBlock node={child} type='link' />)}
             </div>
             <div>
-              <p className='mb-2 p-2 border-t-2 border-t-slate-400'>재복습 일정 선택</p>
-              <ul className="cursor-pointer mb-4 items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                  <div className="flex items-center pl-3">
+              <p className={styles.reviewDateSelectionMessage}>재복습 일정 선택</p>
+              <ul className={`${styles.reviewDateItemList} ${textStyles.sm}`}>
+                <li className={styles.reviewDateItem}>
+                  <div className={styles.reviewDateWrapper}>
                     <input
                       id="horizontal-list-radio-nextReviewInterval1"
                       type="radio"
                       name="list-radio"
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                      className={styles.reviewDateInput}
                       onChange={() => { setNextReviewDayInterval(nextReviewDayIntervals![0]) }}
                     />
                     <label
                       htmlFor="horizontal-list-radio-nextReviewInterval1"
-                      className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                      className={`${textStyles.sm} ${styles.reviewDateLabel}`}>
                       {nextReviewDayIntervals![0]}일 이후
                     </label>
                   </div>
                 </li>
-                <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                  <div className="flex items-center pl-3">
+                <li className={styles.reviewDateItem}>
+                  <div className={styles.reviewDateWrapper}>
                     <input
                       id="horizontal-list-radio-nextReviewInterval2"
                       type="radio"
                       name="list-radio"
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                      className={styles.reviewDateInput}
                       onChange={() => { setNextReviewDayInterval(nextReviewDayIntervals![1]) }}
                     />
                     <label
                       htmlFor="horizontal-list-radio-nextReviewInterval2"
-                      className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                      className={`${textStyles.sm} ${styles.reviewDateLabel}`}>
                       {nextReviewDayIntervals![1]}일 이후
                     </label>
                   </div>
                 </li>
-                <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                  <div className="flex items-center pl-3">
+                <li className={styles.reviewDateItem}>
+                  <div className={styles.reviewDateWrapper}>
                     <input
                       id="horizontal-list-radio-nextReviewInterval3"
                       type="radio"
                       name="list-radio"
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                      className={styles.reviewDateInput}
                       onChange={() => { setNextReviewDayInterval(nextReviewDayIntervals![2]) }}
                     />
                     <label
                       htmlFor="horizontal-list-radio-nextReviewInterval3"
-                      className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                      className={`${textStyles.sm} ${styles.reviewDateLabel}`}>
                       {nextReviewDayIntervals![2]}일 이후
                     </label>
                   </div>
                 </li>
-                <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                  <div className="flex items-center pl-3">
+                <li className={styles.reviewDateItem}>
+                  <div className={styles.reviewDateWrapper}>
                     <input
                       id="horizontal-list-radio-nextReviewInterval4"
                       type="radio"
                       name="list-radio"
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                      className={styles.reviewDateInput}
                       onChange={() => { setNextReviewDayInterval(nextReviewDayIntervals![3]) }}
                     />
                     <label
                       htmlFor="horizontal-list-radio-nextReviewInterval4"
-                      className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                      className={`${textStyles.sm} ${styles.reviewDateLabel}`}>
                       {nextReviewDayIntervals![3]}일 이후
                     </label>
                   </div>
@@ -181,9 +183,9 @@ export default function KeywordNoteDetailPopup() {
               </ul>
               {
                 nextReviewDayInterval && (
-                  <div className='flex justify-center'>
+                  <div className={styles.buttonReviewCompleteContainer}>
                     <button
-                      className='p-2 text-sm font-bold border rounded hover:bg-sgnr-blue hover:border-sgnr-blue'
+                      className={`${styles.buttonReviewComplete} ${textStyles.sm}`}
                       onClick={completeReview}
                     >복습 완료</button>
                   </div>
@@ -191,7 +193,6 @@ export default function KeywordNoteDetailPopup() {
               }
             </div>
           </React.Fragment>
-        
       }
     </div>
   )
@@ -203,7 +204,7 @@ export default function KeywordNoteDetailPopup() {
  */
 function NotionBlock({ node, type = 'text' }: any) {
   return (
-    <ul className='relative ml-6'>
+    <ul className={styles.notionBlock}>
       • {type === 'link' ? <a href={node.text} target='_blank'>{node.text}</a> : node.text}
       <li>
         {

@@ -1,0 +1,100 @@
+.page {
+  padding: 1rem;
+}
+
+.info {
+  position: relative;
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.noteLink {
+  position: absolute;
+  right: 0;
+  border: var(--border);
+  border-radius: var(--border-rounded);
+  padding: 0.25rem;
+}
+
+.noteSection {
+  border: var(--border);
+  border-radius: var(--border-rounded);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.noteSectionTitle {
+  padding: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.reviewDateSelectionMessage {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+.reviewDateItemList {
+  border-color: rgb(229, 231, 235);
+  font-weight: var(--font-medium);
+  background-color: var(--color-white);
+  border-width: 1px;
+  border-radius: var(--border-rounded-lg);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.reviewDateItem {
+  width: 100%;
+  border-bottom: var(--border);
+  border-color: rgb(229 231 235);
+}
+
+.reviewDateWrapper {
+  display: flex;
+  align-items: center;
+  padding-left: 0.75rem;
+}
+
+.reviewDateInput {
+  width: 1rem;
+  height: 1rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  margin: 0px;
+  border-width: 1px;
+  color: rgb(37 99 235);
+  background-color: rgb(243 244 246);
+  border-color: rgb(209 213 219);
+}
+
+.reviewDateLabel {
+  width: 100%;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  margin-left: 0.5rem;
+  font-weight: var(--font-medium);
+  color: rgb(17 24 39 / 1);
+}
+
+.buttonReviewCompleteContainer {
+  display: flex;
+  justify-content: center;
+}
+.buttonReviewComplete {
+  padding: 0.5rem;
+  font-weight: var(--font-bold);
+  border: var(--border);
+  border-radius: var(--border-rounded);
+}
+.buttonReviewComplete:hover {
+  background-color: var(--color-sgnr-blue);
+  border-color: var(--color-sgnr-blue);
+}
+
+.notionBlock {
+  position: relative;
+  margin-left: 1.5rem;
+}

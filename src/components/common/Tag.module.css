@@ -1,0 +1,15 @@
+.tag {
+  border-radius: var(--border-rounded);
+  color: var(--color-white);
+}
+.regular {
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  height: 2rem;
+}
+.small {
+  padding: 0.25rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}

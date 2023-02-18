@@ -1,5 +1,7 @@
 import React from 'react'
 import { TagType } from 'utils/types';
+import styles from './Tag.module.css';
+import textStyles from 'styles/Text.module.css';
 
 export type TagProps = {
   tag: TagType;
@@ -8,8 +10,8 @@ export type TagProps = {
 }
 
 const SIZE_CLASSNAME_MAP = {
-  regular: 'px-2 py-1 mr-2 mb-2 text-base font-bold h-8',
-  small: 'p-1 mr-1 mb-1 text-sm font-semibold',
+  regular: `${styles.regular} ${textStyles.xl}`,
+  small: `${styles.small} ${textStyles.sm}`,
 }
 
 export default function Tag({ tag, size = 'regular', onClick }: TagProps) {
@@ -18,8 +20,8 @@ export default function Tag({ tag, size = 'regular', onClick }: TagProps) {
     <span
       data-tag-id={id}
       onClick={onClick}
-      style={{'backgroundColor': color, 'cursor': onClick ? 'pointer' : 'auto'}}
-      className={`rounded cursor-pointer text-white ${SIZE_CLASSNAME_MAP[size]}`}
+      style={{'backgroundColor': color}}
+      className={`${styles.tag} ${SIZE_CLASSNAME_MAP[size]} ${onClick ? 'pointer' : 'auto'}`}
     >{name}</span>
   )
 }

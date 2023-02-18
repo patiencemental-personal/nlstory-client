@@ -1,0 +1,24 @@
+.page {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 2rem;
+}
+
+.menu {
+  border: var(--border);
+  border-radius: var(--border-rounded);
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu:hover {
+  background-color: var(--color-sgnr-blue);
+  border: none;
+}
+
+.menuName {
+  letter-spacing: var(--tracking-wider);
+  font-weight: var(--font-bold);
+}

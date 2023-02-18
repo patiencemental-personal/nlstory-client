@@ -1,0 +1,42 @@
+.form {
+  border-radius: var(--border-rounded);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin: 4rem auto 0 auto;
+  border: var(--border);
+}
+
+.title {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.label {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-radius: var(--border-rounded);
+  border-spacing: 0.5rem;
+  border-color: var(--color-thick-gray);
+}
+
+.input {
+  background-color: var(--color-white);
+  color: var(--color-thick-gray);
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+}
+
+.button {
+  font-weight: var(--font-bold);
+  width: 350px;
+  padding: 1rem 0;
+  border-radius: var(--border-rounded);
+  background-color: var(--color-thick-gray);
+  margin-bottom: 1rem;
+}

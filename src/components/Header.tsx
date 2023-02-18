@@ -4,8 +4,8 @@ import { BsSquareFill } from 'react-icons/bs';
 import { useAuthContext } from '../contexts/AuthContext';
 import { path } from '../router/path';
 import useWait from 'hooks/useWait';
-
-const BUTTON_CLASSES = 'p-2 hover:bg-sgnr-blue font-bold';
+import styles from './Header.module.css';
+import textStyles from 'styles/Text.module.css';
 
 export default function Header() {
   const { user, logout } = useAuthContext();
@@ -27,17 +27,17 @@ export default function Header() {
   if (pathname === path.WAIT) return null;
 
   return (
-    <header className='flex justify-between border-b text-xl px-2 py-4'>
+    <header className={`${styles.header} ${textStyles.xl}`}>
       <Link 
         to={path.ENTRY}
-        className='p-2 flex align-center'
+        className={styles.link}
       >
-        <BsSquareFill className='text-3xl text-sgnr-blue mr-2' />
-        <h1 className='text-2xl font-bold tracking-wider'>nlstory</h1>
+        <BsSquareFill className={`${styles.icon} ${textStyles.xl3}`} />
+        <h1 className={`${styles.title} ${textStyles.xl2}`}>nlstory</h1>
       </Link>
       <nav>
-        {user && <button onClick={logoutWithWait} className={BUTTON_CLASSES}>로그아웃</button>}
-        {!user && <Link to={path.LOGIN}><button className={`${BUTTON_CLASSES} ${pathname === path.LOGIN && 'bg-blue-900'}`}>로그인</button></Link>}
+        {user && <button onClick={logoutWithWait} className={styles.button}>로그아웃</button>}
+        {!user && <Link to={path.LOGIN}><button className={`${styles.button} ${pathname === path.LOGIN && styles.buttonActive}`}>로그인</button></Link>}
       </nav>
     </header>
   );

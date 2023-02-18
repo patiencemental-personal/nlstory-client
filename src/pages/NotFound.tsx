@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { path } from 'router/path'
+import styles from './NotFound.module.css'
+import textStyles from 'styles/Text.module.css'
 
 export default function NotFound() {
   return (
-    <div className='absolute left-0 w-full h-full flex flex-col justify-center items-center font-bold text-4xl'>
-      <div className='mb-4'>존재하지 않는 페이지 입니다.</div>
-      <Link to={path.ENTRY} className='p-4 rounded bg-sgnr-blue'><button>메인으로</button></Link>
-    </div>
+    <section className={`${styles.page} ${textStyles.xl4}`}>
+      <div className={styles.message}>존재하지 않는 페이지 입니다.</div>
+      <Link to={path.ENTRY} className={styles.link}><button>메인으로</button></Link>
+    </section>
   )
 }

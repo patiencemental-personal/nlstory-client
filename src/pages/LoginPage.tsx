@@ -3,6 +3,8 @@ import useWait from 'hooks/useWait';
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import styles from './LoginPage.module.css';
+import textStyles from 'styles/Text.module.css'
 
 export default function LoginPage() {
 
@@ -29,12 +31,12 @@ export default function LoginPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='shadow-lg shadow-slate-600 rounded w-[500px] flex flex-col mx-auto items-center mt-16'>
-      <h1 className='text-3xl p-4 mb-4 text-center'>로그인</h1>
-      <label className='w-[350px] flex justify-between items-center mb-4 rounded border-spacing-2 border-zinc-500'>
-        <input name="password" type="password" placeholder='인증 번호를 입력하세요.' className='bg-white text-zinc-500 w-full py-1 px-2' />
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <h1 className={`${textStyles.xl3} ${styles.title}`}>로그인</h1>
+      <label className={styles.label}>
+        <input name="password" type="password" placeholder='인증 번호를 입력하세요.' className={styles.input} />
       </label>
-      <button type="submit" className='font-bold w-[350px] py-4 rounded bg-zinc-500 mb-4'>로그인</button>
+      <button type="submit" className={styles.button}>로그인</button>
     </form>
   );
 }

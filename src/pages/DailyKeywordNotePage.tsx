@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import * as keywordNoteClient from 'apis/keywordNote';
 import { usePopupStore } from 'stores/usePopupStore';
 import { popupType } from 'utils/freezeTypes';
+import styles from './DailyKeywordNotePage.module.css';
+import textStyles from 'styles/Text.module.css';
 
 export default function DailyKeywordNotePage() {
 
@@ -35,13 +37,15 @@ export default function DailyKeywordNotePage() {
   }, []);
 
   return (
-    <section className='p-8'>
+    <section className={styles.page}>
       {
         keywordNotes.map(({id, url, properties}: {id: string, url: string, properties: any}) => {
           return (
-            <div key={id} className='border rounded p-4 mb-6 cursor-pointer' onClick={() => openKeywordNoteDetailPopup(id, url, properties)}>
-              <p className='mb-2 p-2 text-xl border-b-2 inline-block'>## {properties.title.title[0].plain_text}</p>
-              <div className='flex p-2 flex-col'>
+            <div key={id} className={styles.note} onClick={() => openKeywordNoteDetailPopup(id, url, properties)}>
+              <p className={`${styles.noteTitle} ${textStyles.xl}`}>
+                ## {properties.title.title[0].plain_text}
+              </p>
+              <div className={styles.noteBody}>
                 <div>[주제] {properties.topic.select.name}</div>
                 <div>[난이도] {properties.difficulty.select.name}</div>
                 <div>[복습 횟수] {properties.reviewCnt.number}</div>

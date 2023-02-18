@@ -13,34 +13,6 @@ const AuthContext = createContext();
 export function AuthContextProvider({children}) {
   const [user, setUser] = useState();
 
-  // const sendEmailVerification = () => {
-  //   fSendEmailVerification()
-  //     .then(() => toast.success(PLEASE_CHECK_EMAIL_INBOX))
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       toast.error(`[${errorCode}] ${errorMessage}`);
-  //       throw Promise.reject(error);
-  //     })
-  // }
-
-  // const sendPasswordResetEmail = (email) => {
-  //   fSendPasswordResetEmail(email)
-  //     .then(() => {
-  //       toast.success(PLEASE_CHECK_EMAIL_INBOX)
-  //     })
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       toast.error(`[${errorCode}] ${errorMessage}`);
-  //     })
-  // }
-
-  // 회원가입
-  // const signup = async (email, password) => {
-  //   await fSignup(email, password);
-  // }
-
   const login = (password) => {
     if (password === process.env.REACT_APP_ADMIN) {
       setUser(() => {
@@ -70,14 +42,11 @@ export function AuthContextProvider({children}) {
     }
   }, [user])
 
-
-
   return (
     // 컴포넌트 렌더링 이전에 수행할 수 있는 라이프사이클이 없기에 스토리지에 데이터가 있는지 확인한 이후에 렌더링 시점 정의
     <AuthContext.Provider value={{ 
       user, uid: user && user.uid,
       login, logout,
-      // signup, sendEmailVerification, sendPasswordResetEmail
     }}>
       {/* userFromStorage가 없으면 => 기존 로그인된 유저가 없음 => children 렌더링 */}
       {!userFromStorage && children}

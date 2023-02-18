@@ -1,5 +1,6 @@
 import React from 'react'
 import { useFloatingPopupStore } from 'stores/useFloatingPopupStore';
+import styles from './FloatingPopupTemplate.module.css';
 
 export default function FloatingPopupTemplate({children, mousePosition}: {
   children: React.ReactNode,
@@ -8,12 +9,11 @@ export default function FloatingPopupTemplate({children, mousePosition}: {
   const { closeFloatingPopup } = useFloatingPopupStore();
   return (
     <div
-      id='background'
+      className={styles.background}
       onClick={closeFloatingPopup}
-      onContextMenu={closeFloatingPopup}
-      className='fixed w-full h-full left-0 top-0'>
+      onContextMenu={closeFloatingPopup}>
       <span 
-        className='fixed'
+        className={styles.template}
         style={{ top: `${mousePosition.y}px`, left: `${mousePosition.x}px`}}
       >{children}</span>
     </div>
