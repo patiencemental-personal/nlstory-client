@@ -5,7 +5,8 @@
 .info {
   position: relative;
   display: flex;
-  margin-bottom: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .noteLink {
@@ -14,6 +15,8 @@
   border: var(--border);
   border-radius: var(--border-rounded);
   padding: 0.25rem;
+  display: flex;
+  align-items: center;
 }
 
 .noteSection {
@@ -24,7 +27,7 @@
 }
 
 .noteSectionTitle {
-  padding: 0.25rem;
+  margin: 0;
   margin-bottom: 0.5rem;
 }
 

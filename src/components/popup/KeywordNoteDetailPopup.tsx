@@ -9,6 +9,7 @@ import useLoading from 'hooks/useLoading';
 import { BsLink } from 'react-icons/bs';
 import styles from './KeywordNoteDetailPopup.module.css';
 import textStyles from 'styles/Text.module.css';
+import Button from 'components/common/Button';
 
 const KEYWORD = 'Keyword';
 const OUTPUT_GUIDE = 'Output Guide';
@@ -77,22 +78,22 @@ export default function KeywordNoteDetailPopup() {
                 id: 'topic',
                 name: `[주제] ${topic}`,
                 color: '#3b82f6',
-              }} />
+              }} size='small' />
               <Tag tag={{
                 id: 'topic',
                 name: `[난이도] ${difficulty}`,
                 color: '#f59e0b',
-              }} />
+              }} size='small' />
               <Tag tag={{
                 id: 'topic',
                 name: `[복습 횟수] ${reviewCnt}`,
                 color: '#10b981',
-              }} />
+              }} size='small' />
               <Tag tag={{
                 id: 'topic',
                 name: `[최근 복습 일자] ${lastReviewDate}`,
                 color: '#03a9f4',
-              }} />
+              }} size='small' />
               {/* 
                 @see
                 https://stackoverflow.com/questions/50709625/link-with-target-blank-and-rel-noopener-noreferrer-still-vulnerable
@@ -103,15 +104,15 @@ export default function KeywordNoteDetailPopup() {
             </div>
             <div className={styles.noteSection}>
               <p className={`${styles.noteSectionTitle} ${textStyles.xl}`}># Keyword</p>
-              {(keywordNoteDetail[KEYWORD] as any).children.map((child: any) => <NotionBlock node={child} />)}
+              {(keywordNoteDetail[KEYWORD] as any).children.map((child: any) => <NotionBlock key={child.id} node={child} />)}
             </div>
             <div className={styles.noteSection}>
               <p className={`${styles.noteSectionTitle} ${textStyles.xl}`}># Output Guide</p>
-              {(keywordNoteDetail[OUTPUT_GUIDE] as any).children.map((child: any) => <NotionBlock node={child} />)}
+              {(keywordNoteDetail[OUTPUT_GUIDE] as any).children.map((child: any) => <NotionBlock key={child.id} node={child} />)}
             </div>
             <div className={styles.noteSection}>
               <p className={`${styles.noteSectionTitle} ${textStyles.xl}`}># Reference Links</p>
-              {(keywordNoteDetail[REFERENCE_LINKS] as any).children.map((child: any) => <NotionBlock node={child} type='link' />)}
+              {(keywordNoteDetail[REFERENCE_LINKS] as any).children.map((child: any) => <NotionBlock key={child.id} node={child} type='link' />)}
             </div>
             <div>
               <p className={styles.reviewDateSelectionMessage}>재복습 일정 선택</p>
@@ -184,10 +185,11 @@ export default function KeywordNoteDetailPopup() {
               {
                 nextReviewDayInterval && (
                   <div className={styles.buttonReviewCompleteContainer}>
-                    <button
+                    {/* <button
                       className={`${styles.buttonReviewComplete} ${textStyles.sm}`}
                       onClick={completeReview}
-                    >복습 완료</button>
+                    >복습 완료</button> */}
+                    <Button onClick={completeReview}>복습 완료</Button>
                   </div>
                 )
               }

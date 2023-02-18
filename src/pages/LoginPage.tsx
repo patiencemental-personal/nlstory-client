@@ -4,7 +4,8 @@ import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styles from './LoginPage.module.css';
-import textStyles from 'styles/Text.module.css'
+import textStyles from 'styles/Text.module.css';
+import Button from 'components/common/Button';
 
 export default function LoginPage() {
 
@@ -36,7 +37,7 @@ export default function LoginPage() {
       <label className={styles.label}>
         <input name="password" type="password" placeholder='인증 번호를 입력하세요.' className={styles.input} />
       </label>
-      <button type="submit" className={styles.button}>로그인</button>
+      <Button layout='fullWidth' color='secondary'>로그인</Button>
     </form>
   );
 }

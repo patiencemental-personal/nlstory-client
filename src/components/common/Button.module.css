@@ -1,0 +1,45 @@
+/*
+- button style 속성을 어떤 기준으로 나눌건지 생각해보기
+- active 속성 아직 적용 안됨
+*/
+
+/* size */
+.small {
+  height: 36px;
+  font-size: 14px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.medium {
+  height: 48px;
+  font-size: 16px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* layout */
+.inline {
+  display: inline;
+}
+.fullWidth {
+  width: 100%;
+}
+
+/* color */
+.primary {
+  background-color: var(--color-sgnr-blue);
+  color: var(--color-white);
+  border: none;
+}
+.primary:hover {
+  opacity: 0.875;
+}
+
+.secondary {
+  background-color: rgb(113 113 122);
+  color: var(--color-white);
+  border: none;
+}
+.secondary:hover {
+  opacity: 0.5;
+}

@@ -1,8 +1,8 @@
 import React from 'react'
-import { GiCancel } from 'react-icons/gi';
 import { usePopupStore } from 'stores/usePopupStore';
 import styles from './PopupTemplate.module.css';
 import textStyles from 'styles/Text.module.css';
+import CancleButton from 'components/common/CancleButton';
 
 export default function PopupTemplate({children}: { children: React.ReactNode }) {
   const { getOption, closePopup } = usePopupStore();
@@ -20,7 +20,7 @@ export default function PopupTemplate({children}: { children: React.ReactNode })
       <div id='template' className={styles.template}>
         <div className={`${styles.header} ${textStyles.xl}`}>
           {title ? <span className={styles.title}>{title}</span> : <div></div>}
-          <button onClick={closePopup} className={styles.buttonClose}><GiCancel /></button>
+          <CancleButton onClick={closePopup} />
         </div>
         {children}
       </div>

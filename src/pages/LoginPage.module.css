@@ -6,6 +6,8 @@
   width: 500px;
   margin: 4rem auto 0 auto;
   border: var(--border);
+  padding: 2rem;
+  padding-top: 0;
 }
 
 .title {
@@ -15,7 +17,7 @@
 }
 
 .label {
-  width: 350px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,7 +31,7 @@
   background-color: var(--color-white);
   color: var(--color-thick-gray);
   width: 100%;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem;
 }
 
 .button {

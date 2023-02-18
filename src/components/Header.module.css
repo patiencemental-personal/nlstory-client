@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--color-white);
   padding: 1rem 0.5rem;
 }
@@ -21,7 +22,7 @@
   letter-spacing: var(--tracking-wider);
 }
 
-.button {
+/* .button {
   padding: 0.5rem;
   font-weight: var(--font-bold);
 }
@@ -30,4 +31,4 @@
 }
 .buttonActive {
   background-color: var(--color-thick-blue);
-}
+} */

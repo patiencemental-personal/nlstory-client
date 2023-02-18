@@ -58,3 +58,19 @@ input {
   margin: 0;
   border-color: rgb(209 213 219);
 }
+
+a {
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
