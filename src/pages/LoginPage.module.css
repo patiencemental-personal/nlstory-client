@@ -42,3 +42,10 @@
   background-color: var(--color-thick-gray);
   margin-bottom: 1rem;
 }
+
+@media (max-width: 500px) {
+  .form {
+    width: 100%;
+    border: none;
+  }
+}

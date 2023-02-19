@@ -1,4 +1,4 @@
-.page {
+.popup {
   padding: 1rem;
 }
 
@@ -41,7 +41,6 @@
   font-weight: var(--font-medium);
   background-color: var(--color-white);
   border-width: 1px;
-  border-radius: var(--border-rounded-lg);
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -100,4 +99,19 @@
 .notionBlock {
   position: relative;
   margin-left: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .info {
+    flex-direction: column;
+    align-items: start;
+  }
+  .info span:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 500px) {
+  .reviewDateItemList {
+    flex-direction: column;
+  } 
 }

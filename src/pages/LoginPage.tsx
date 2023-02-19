@@ -27,7 +27,7 @@ export default function LoginPage() {
         callback: () => navigate(from, { replace: true })
       }).goWaitPage();
     } else {
-      toast.error(`올바른 인증 번호를 입력해주세요.`);      
+      toast.error(`올바른 인증 번호를 입력해주세요.`);
     }
   }
 

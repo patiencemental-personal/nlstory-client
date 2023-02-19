@@ -43,7 +43,7 @@ export default function DailyKeywordNotePage() {
           return (
             <div key={id} className={styles.note} onClick={() => openKeywordNoteDetailPopup(id, url, properties)}>
               <p className={`${styles.noteTitle} ${textStyles.xl}`}>
-                ## {properties.title.title[0].plain_text}
+                {properties.title.title[0].plain_text}
               </p>
               <div className={styles.noteBody}>
                 <div>[주제] {properties.topic.select.name}</div>

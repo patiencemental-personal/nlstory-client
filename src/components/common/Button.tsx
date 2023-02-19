@@ -15,13 +15,10 @@ export default function Button({
   size = 'medium', layout = 'inline',
   color = 'primary', active = false,
 }: ButtonProps) {
-  const styleSize = styles[size];
-  const styleLayout = styles[layout];
-  const styleColor = styles[color];
   return (
     <button
       onClick={onClick}
-      className={`${styles.button} ${styleSize} ${styleLayout} ${styleColor}`}
+      className={`${styles.button} ${styles[size]} ${styles[layout]} ${styles[color]}`}
     >{children}</button>
   )
 }
