@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuthContext } from 'contexts/AuthContext';
+import { useAuthStore } from 'stores/useAuthStore'; 
 import { Navigate, useLocation } from 'react-router-dom';
 import { NEED_LOGIN } from 'utils/constants';
 import { path } from 'router/path';
@@ -9,7 +9,7 @@ export default function RequireAuth({ children, emailVerified = true}: {
   emailVerified?: boolean
 }) {
 
-  const { user } = useAuthContext();
+  const user = useAuthStore.getState().user;
   const location = useLocation();
 
   if (!user) {

@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BsSquareFill } from 'react-icons/bs';
-import { useAuthContext } from '../contexts/AuthContext';
+import { useAuthStore } from 'stores/useAuthStore';
 import { path } from '../router/path';
 import useWait from 'hooks/useWait';
 import styles from './Header.module.css';
 import textStyles from 'styles/Text.module.css';
 import Button from 'components/common/Button';
+import { toast } from 'react-toastify';
 
 export default function Header() {
-  const { user, logout } = useAuthContext();
+  const { user, logout } = useAuthStore();
   const setWaitOption = useWait();
   const navigate = useNavigate();
   const location = useLocation();
@@ -17,9 +18,15 @@ export default function Header() {
   const logoutWithWait = () => {
     setWaitOption({
       time: 1500,
-      callback: () => {
-        logout();
-        navigate(path.ENTRY);
+      callback: async () => {
+        try {
+          const response = await logout();
+          toast.success(response.data.message);
+        } catch (error: any) {
+          toast.error(error.response.data.message);
+        } finally {
+          navigate(path.ENTRY);
+        }
       }
     }).goWaitPage();
   }
@@ -37,9 +44,6 @@ export default function Header() {
         <h1 className={`${styles.title} ${textStyles.xl2}`}>nlstory</h1>
       </Link>
       <nav>
-        {/* {user && <button onClick={logoutWithWait} className={styles.button}>로그아웃</button>}
-        {!user && <Link to={path.LOGIN}><button className={`${styles.button} ${pathname === path.LOGIN && styles.buttonActive}`}>로그인</button></Link>} */}
-
         {user && <Button onClick={logoutWithWait}>로그아웃</Button>}
         {!user && <Link to={path.LOGIN}><Button active={pathname === path.LOGIN}>로그인</Button></Link>}
       </nav>

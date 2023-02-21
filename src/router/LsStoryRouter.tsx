@@ -1,4 +1,3 @@
-import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from '../layouts/Layout';
 import HomePage from '../pages/HomePage';
@@ -10,6 +9,7 @@ import RequireNoAuth from './RequireNoAuth';
 import WaitPage from 'pages/WaitPage';
 // import RequireTestAuth from './RequireTestAuth';
 import DailyKeywordNotePage from 'pages/DailyKeywordNotePage';
+import Inintialize from 'Inintialize';
 
 const {
   ENTRY, WAIT, LOGIN, DAILY_KEYWORD_NOTE,
@@ -18,7 +18,7 @@ const {
 const router = createBrowserRouter([
   {
     path: ENTRY,
-    element: <Layout />,
+    element: <Inintialize><Layout /></Inintialize>,
     errorElement: <NotFound />,
     children: [
       {

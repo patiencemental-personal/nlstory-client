@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import LsStoryRouter from './router/LsStoryRouter';
-import { AuthContextProvider } from './contexts/AuthContext';
 import GlobalPopup from 'components/popup/GlobalPopup';
 import GlobalFloatingPopup from 'components/floatingPopup/GlobalFloatingPopup';
 import { ToastContainer, Flip  } from 'react-toastify';
@@ -12,13 +11,10 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
-    // <React.StrictMode>
     <React.Fragment>
-      <AuthContextProvider>
-        <LsStoryRouter />
-        <GlobalPopup />
-        <GlobalFloatingPopup />
-      </AuthContextProvider>
+      <LsStoryRouter />
+      <GlobalPopup />
+      <GlobalFloatingPopup />
       <ToastContainer
         transition={Flip}
         position="top-right"
@@ -27,6 +23,5 @@ if (rootElement) {
         pauseOnHover
       />
     </React.Fragment>
-    // </React.StrictMode>
   );
 }

@@ -1,4 +1,3 @@
-import { useAuthContext } from 'contexts/AuthContext';
 import useWait from 'hooks/useWait';
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -6,6 +5,7 @@ import { toast } from 'react-toastify';
 import styles from './LoginPage.module.css';
 import textStyles from 'styles/Text.module.css';
 import Button from 'components/common/Button';
+import { useAuthStore } from 'stores/useAuthStore';
 
 export default function LoginPage() {
 
@@ -13,21 +13,25 @@ export default function LoginPage() {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   
-  const { login } = useAuthContext();
+  const { login } = useAuthStore();
   const setWaitOption = useWait();
   
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const password = formData.get("password") as string;
     
-    if (login(password)) {
+    try {
+      const response = await login(password);
       setWaitOption({
         time: 1500,
-        callback: () => navigate(from, { replace: true })
+        callback: async () => {
+          toast.success(response.data.message);
+          navigate(from, { replace: true });
+        }
       }).goWaitPage();
-    } else {
-      toast.error(`올바른 인증 번호를 입력해주세요.`);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   }
 
