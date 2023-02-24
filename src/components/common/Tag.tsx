@@ -1,9 +1,14 @@
 import React from 'react'
-import { TagType } from 'utils/types';
 import styles from './Tag.module.css';
 import textStyles from 'styles/Text.module.css';
 
-export type TagProps = {
+type TagType = {
+  id: string;
+  name: string;
+  color: string;
+};
+
+type TagProps = {
   tag: TagType;
   size?: 'regular' | 'small';
   onClick?: (event: React.BaseSyntheticEvent) => void;

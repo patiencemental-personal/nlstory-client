@@ -7,7 +7,6 @@ import RequireAuth from './RequireAuth';
 import LoginPage from 'pages/LoginPage';
 import RequireNoAuth from './RequireNoAuth';
 import WaitPage from 'pages/WaitPage';
-// import RequireTestAuth from './RequireTestAuth';
 import DailyKeywordNotePage from 'pages/DailyKeywordNotePage';
 import Inintialize from 'Inintialize';
 

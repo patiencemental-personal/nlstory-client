@@ -74,9 +74,8 @@ export default function KeywordNoteDetailPopup() {
         <React.Fragment>
           <div className={styles.info}>
             {/* 
-                @see
-                https://stackoverflow.com/questions/50709625/link-with-target-blank-and-rel-noopener-noreferrer-still-vulnerable
-              */}
+              @see https://stackoverflow.com/questions/50709625/link-with-target-blank-and-rel-noopener-noreferrer-still-vulnerable
+            */}
             <a href={url} target='_blank' rel="noopener noreferrer" className={`${textStyles.xl2} ${styles.noteLink}`}>
               <BsLink />
             </a>
