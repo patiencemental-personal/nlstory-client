@@ -6,7 +6,13 @@ import CancleButton from 'components/common/CancleButton';
 
 export default function PopupTemplate({children}: { children: React.ReactNode }) {
   const { getOption, closePopup } = usePopupStore();
-  const { title } = getOption();
+  const title = getOption()?.title;
+  const customClosePopup = getOption()?.closePopup;
+  const hideHeader = (() => {
+    let hide = getOption()?.hideHeader;
+    if (hide === undefined) hide = false;
+    return hide;
+  })();
 
   const closePopupByBackgroundClick = (event: React.BaseSyntheticEvent) => {
     if (event.target.id === 'background') {
@@ -16,12 +22,13 @@ export default function PopupTemplate({children}: { children: React.ReactNode })
 
   return (
     <div id='background' className={styles.background}>
-      {/* w-auto로 함으로써 팝업 구현체에서 default, max, min width를 지정 */}
       <div id='template' className={styles.template}>
-        <div className={`${styles.header} ${textStyles.xl}`}>
-          {title ? <span className={styles.title}>{title}</span> : <div></div>}
-          <CancleButton onClick={closePopup} />
-        </div>
+        {!hideHeader && (
+          <div className={`${styles.header} ${textStyles.xl}`}>
+            {title ? <span className={styles.title}>{title}</span> : <div></div>}
+            <CancleButton onClick={customClosePopup || closePopup} />
+          </div>
+        )}
         {children}
       </div>
     </div>
