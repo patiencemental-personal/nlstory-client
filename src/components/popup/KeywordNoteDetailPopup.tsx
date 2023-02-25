@@ -183,10 +183,6 @@ export default function KeywordNoteDetailPopup() {
             {
               nextReviewDayInterval && (
                 <div className={styles.buttonReviewCompleteContainer}>
-                  {/* <button
-                      className={`${styles.buttonReviewComplete} ${textStyles.sm}`}
-                      onClick={completeReview}
-                    >복습 완료</button> */}
                   <Button onClick={completeReview}>복습 완료</Button>
                 </div>
               )
@@ -205,7 +201,7 @@ export default function KeywordNoteDetailPopup() {
 function NotionBlock({ node, type = 'text' }: any) {
   return (
     <ul className={styles.notionBlock}>
-      • {type === 'link' ? <a href={node.text} target='_blank'>{node.text}</a> : node.text}
+      • {type === 'link' ? <a href={node.text} target='_blank' rel='noreferrer'>{node.text}</a> : node.text}
       <li>
         {
           node.children.length > 0 && (node.children as any).map((child: any) => {

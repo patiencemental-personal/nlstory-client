@@ -36,7 +36,7 @@
 }
 
 .secondary {
-  background-color: rgb(113 113 122);
+  background-color: var(--color-thick-gray);
   color: var(--color-white);
   border: none;
 }

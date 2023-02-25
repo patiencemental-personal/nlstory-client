@@ -37,7 +37,7 @@
 }
 
 .reviewDateItemList {
-  border-color: rgb(229, 231, 235);
+  border-color: var(--color-white);
   font-weight: var(--font-medium);
   background-color: var(--color-white);
   border-width: 1px;
@@ -51,7 +51,7 @@
 .reviewDateItem {
   width: 100%;
   border-bottom: var(--border);
-  border-color: rgb(229 231 235);
+  border-color: var(--color-white);
 }
 
 .reviewDateWrapper {
@@ -67,9 +67,9 @@
   outline-offset: 2px;
   margin: 0px;
   border-width: 1px;
-  color: rgb(37 99 235);
-  background-color: rgb(243 244 246);
-  border-color: rgb(209 213 219);
+  color: var(--color-blue);
+  background-color: var(--color-white);
+  border-color: var(--color-white);
 }
 
 .reviewDateLabel {
@@ -78,7 +78,7 @@
   padding-bottom: 0.75rem;
   margin-left: 0.5rem;
   font-weight: var(--font-medium);
-  color: rgb(17 24 39 / 1);
+  color: var(--color-thick-dark);
 }
 
 .buttonReviewCompleteContainer {
