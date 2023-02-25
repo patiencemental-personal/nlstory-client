@@ -4,16 +4,38 @@ import { usePopupStore } from 'stores/usePopupStore';
 import { popupType } from 'utils/freezeTypes';
 import styles from './DailyKeywordNotePage.module.css';
 import textStyles from 'styles/Text.module.css';
+import { useNavigate } from 'react-router-dom';
+import { path } from 'router/path';
 
 export default function DailyKeywordNotePage() {
 
-  const openPopup = usePopupStore(state => state.openPopup);
+  const { openPopup, closePopup } = usePopupStore();
+  const navigate = useNavigate();
 
   const [keywordNotes, setKeywordNotes] = useState([]);
 
   const getDailyKeywordNote = async () => {
-    const dailyKeywordNotes = await keywordNoteClient.getDailyKeywordNote();
-    setKeywordNotes(dailyKeywordNotes.data);
+    try {
+      const dailyKeywordNotes = await keywordNoteClient.getDailyKeywordNote();
+      setKeywordNotes(dailyKeywordNotes.data);
+    } catch (error) {
+      openPopup({
+        type: popupType.MESSAGE,
+        option: {
+          hideHeader: true,
+          message: '오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
+          buttons: [
+            {
+              name: '메인으로',
+              onClick: () => {
+                navigate(path.ENTRY);
+                closePopup();
+              }
+            }
+          ]
+        }
+      })
+    }
   }
 
   const openKeywordNoteDetailPopup = async (id: string, url: string, properties: any) => {

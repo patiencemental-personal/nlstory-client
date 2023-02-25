@@ -19,17 +19,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
    * @see https://github.com/pmndrs/zustand#async-actions
    */
   login: async (password: string) => {
-    try {
-      const response = await authClient.login(password);
-      if (response.status === 201) {
-        set((state) => ({ 
-          ...state, 
-          user: response.data.user,
-        }));
-        return response;
-      }
-    } catch (error) {
-      throw error;
+    const response = await authClient.login(password);
+    if (response.status === 201) {
+      set((state) => ({ 
+        ...state, 
+        user: response.data.user,
+      }));
+      return response;
     }
   },
   loginSuccess: async () => {
@@ -44,17 +40,14 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       }
     } catch (error) {
       set((state) => ({ ...state, user: null }));
+      throw error;
     }
   },
   logout: async () => {
-    try {
-      const response = await authClient.logout();
-      if (response.status === 200) {
-        set((state) => ({ ...state, user: null }));
-        return response;
-      }
-    } catch (error) {
-      throw error;
+    const response = await authClient.logout();
+    if (response.status === 200) {
+      set((state) => ({ ...state, user: null }));
+      return response;
     }
   },
 }));

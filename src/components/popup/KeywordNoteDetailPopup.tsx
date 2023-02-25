@@ -10,6 +10,7 @@ import { BsLink } from 'react-icons/bs';
 import styles from './KeywordNoteDetailPopup.module.css';
 import textStyles from 'styles/Text.module.css';
 import Button from 'components/common/Button';
+import { toast } from 'react-toastify';
 
 const KEYWORD = 'Keyword';
 const OUTPUT_GUIDE = 'Output Guide';
@@ -45,10 +46,14 @@ export default function KeywordNoteDetailPopup() {
       'lastReviewDate': { date: { start: formatedToday, }, },
       'nextReviewDate': { date: { start: formatedNextReviewDate, } },
     };
-    const response = await keywordNoteClient.updateKeywordNoteProperties(keywordNoteId, properties);
-    onCompleteReview();
-    endLoading();
-    closePopup();
+    try {
+      await keywordNoteClient.updateKeywordNoteProperties(keywordNoteId, properties);
+      await onCompleteReview();
+      closePopup();
+    } catch (error) {
+      toast.error('리뷰를 완료하는데 실패했습니다.');      
+      endLoading();
+    }
   }
 
   const printRecursive = (node: any) => {
@@ -61,9 +66,14 @@ export default function KeywordNoteDetailPopup() {
   useEffect(() => {
     startLoading();
     (async function getKeywordNoteDetail() {
-      const response = await keywordNoteClient.getKeywordNoteDetail(keywordNoteId);
-      setKeywordNoteDetail(response.data);
-      endLoading();
+      try {
+        const response = await keywordNoteClient.getKeywordNoteDetail(keywordNoteId);
+        setKeywordNoteDetail(response.data);
+        endLoading();
+      } catch (error) {
+        closePopup();
+        toast.error('키워드 노트를 불러오는데 실패했습니다.');
+      }
     })();
   }, []);
 
