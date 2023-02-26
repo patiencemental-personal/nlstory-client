@@ -6,6 +6,7 @@ import styles from './LoginPage.module.css';
 import textStyles from 'styles/Text.module.css';
 import Button from 'components/common/Button';
 import { useAuthStore } from 'stores/useAuthStore';
+import useInputRef from 'hooks/useInputRef';
 
 export default function LoginPage() {
 
@@ -15,14 +16,25 @@ export default function LoginPage() {
   
   const { login } = useAuthStore();
   const setWaitOption = useWait();
+  const passwordInputRef = useInputRef({ 
+    validRules: [
+      { rule: 'require', message: '인증 번호를 입력하세요.' },
+      { rule: 'password', message: '유효하지 않은 인증 번호 입니다.' }
+    ]  
+  });
   
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const password = formData.get("password") as string;
-    
+
+    const { valid, message } = passwordInputRef.validate();
+
+    if (!valid) {
+      toast.error(message);
+      return ;
+    }
+
     try {
-      const response = await login(password);
+      const response = await login(passwordInputRef.get());
       setWaitOption({
         time: 1500,
         callback: async () => {
@@ -39,7 +51,13 @@ export default function LoginPage() {
     <form onSubmit={handleSubmit} className={styles.form}>
       <h1 className={`${textStyles.xl3} ${styles.title}`}>로그인</h1>
       <label className={styles.label}>
-        <input name="password" type="password" placeholder='인증 번호를 입력하세요.' className={styles.input} />
+        <input
+          ref={passwordInputRef.reference}
+          name="password"
+          type="password"
+          placeholder='인증 번호를 입력하세요.'
+          className={styles.input}
+        />
       </label>
       <Button layout='fullWidth' color='secondary'>로그인</Button>
     </form>
