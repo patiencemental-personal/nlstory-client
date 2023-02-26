@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuthStore } from 'stores/useAuthStore';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'router/path';
+import { toast } from 'react-toastify';
 
 export default function Inintialize({children}: {children: React.ReactNode}) {
   
@@ -14,8 +15,9 @@ export default function Inintialize({children}: {children: React.ReactNode}) {
     (async () => {
       try {
         await loginSuccess();
-      } catch (error) {
         navigate(path.ENTRY);
+      } catch (error: any) {
+        if (error.response.status !== 403) toast.error(error.message)
       } finally {
         setFetchedAuth(true);
       }
