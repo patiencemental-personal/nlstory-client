@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthStore } from 'stores/useAuthStore';
-import { useNavigate } from 'react-router-dom';
-import { path } from 'router/path';
 import { toast } from 'react-toastify';
 
 export default function Inintialize({children}: {children: React.ReactNode}) {
   
   const [fetchedAuth, setFetchedAuth] = useState(false);
   const { loginSuccess } = useAuthStore();
-  const navigate = useNavigate();
   
   // inintialize login
   useEffect(() => {
     (async () => {
       try {
         await loginSuccess();
-        navigate(path.ENTRY);
       } catch (error: any) {
         if (error.response.status !== 403) toast.error(error.message)
       } finally {
         setFetchedAuth(true);
       }
     })();
-  }, [loginSuccess, fetchedAuth, navigate]);
+  }, [loginSuccess, fetchedAuth]);
 
   /**
    * conditional rendering: 서버로 부터 로그인 정보를 받아온 이후 렌더링
