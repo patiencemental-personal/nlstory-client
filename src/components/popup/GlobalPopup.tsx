@@ -1,6 +1,6 @@
 import React from 'react'
 import { usePopupStore } from 'stores/usePopupStore'
-import { popupType } from 'utils/freezeTypes';
+import { popupType } from 'utils/popup';
 import PopupTemplate from './PopupTemplate';
 import KeywordNoteDetailPopup from './KeywordNoteDetailPopup';
 import MessagePopup from './MessagePopup';

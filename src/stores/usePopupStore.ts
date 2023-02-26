@@ -1,5 +1,5 @@
 import create from 'zustand';
-import { popupType } from 'utils/freezeTypes';
+import { popupType } from 'utils/popup';
 
 type PopupType = keyof typeof popupType;
 

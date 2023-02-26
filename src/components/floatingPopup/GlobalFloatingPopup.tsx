@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFloatingPopupStore } from 'stores/useFloatingPopupStore';
-import { floatingPopupType } from 'utils/freezeTypes';
+import { floatingPopupType } from 'utils/popup';
 import FloatingPopupTemplate from './FloatingPopupTemplate';
 
 export default function GlobalFloatingPopup() {

@@ -1,5 +1,5 @@
 import create from 'zustand';
-import { floatingPopupType } from 'utils/freezeTypes';
+import { floatingPopupType } from 'utils/popup';
 
 type FloatingPopupType = keyof typeof floatingPopupType;
 

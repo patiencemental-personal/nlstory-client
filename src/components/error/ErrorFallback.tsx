@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { usePopupStore } from 'stores/usePopupStore'
-import { popupType } from 'utils/freezeTypes';
+import { popupType } from 'utils/popup';
 
 export default function ErrorFallback({ 
   error, resetErrorBoundary 

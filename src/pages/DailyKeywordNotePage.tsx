@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import * as keywordNoteClient from 'apis/keywordNote';
 import { usePopupStore } from 'stores/usePopupStore';
-import { popupType } from 'utils/freezeTypes';
+import { popupType } from 'utils/popup';
 import styles from './DailyKeywordNotePage.module.css';
 import textStyles from 'styles/Text.module.css';
 import { useNavigate } from 'react-router-dom';
